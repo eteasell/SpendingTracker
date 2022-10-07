@@ -8,7 +8,7 @@
 - Set and manage saving and spending goals
 - Analyze spending habits visually
 - Keep track of friend-to-friend debts
-- Input monthly expenses and calculate an appropriate amount of monthly sending money
+- Input monthly expenses and calculate an appropriate amount of monthly spending money
 
 This application is **for** university students, **by** a university student. 
 
