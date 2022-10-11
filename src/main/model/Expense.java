@@ -14,7 +14,7 @@ public class Expense {
         this.dueMonthly = status;
     }
 
-    private void isMonthlyExpense() {
+    public void isMonthlyExpense() {
         if (this.dueMonthly) {
             MonthlyExpenses.addExpense(this);
         }
