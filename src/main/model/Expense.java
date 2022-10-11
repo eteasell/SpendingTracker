@@ -1,5 +1,7 @@
 package model;
 
+import model.MonthlyExpenses;
+
 // Represents an expense, either to be paid one time or monthly, with an amount and a name
 public class Expense {
     private String title;
@@ -13,7 +15,9 @@ public class Expense {
     }
 
     private void isMonthlyExpense() {
-        //if (this.dueMonthly)
+        if (this.dueMonthly) {
+            MonthlyExpenses.addExpense(this);
+        }
     }
 
     public String getTitle() {
