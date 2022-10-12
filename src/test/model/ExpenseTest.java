@@ -19,10 +19,10 @@ public class ExpenseTest {
         testMonthlyExpenses = new MonthlyExpenses();
     }
 
-    @Test
-    public void testIsMonthlyExpenseTrue () {
-        testExpenseCar.isMonthlyExpense();
-        testMonthlyExpenses.size();
-    }
+//    @Test
+//    public void testIsMonthlyExpenseTrue () {
+//        testExpenseCar.isMonthlyExpense();
+//        ArrayList.size(testMonthlyExpenses);
+//    }
 
 }

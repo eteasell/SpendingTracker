@@ -1,9 +1,11 @@
 package model;
 
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import model.MyPiggyBank;
 
+//Represents the monthly expenses for the current month that have been or are yet to be paid
 public class ThisMonthsExpenses extends MonthlyExpenses {
 
     private ArrayList<Expense> overdueExpenses;

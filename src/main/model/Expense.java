@@ -7,6 +7,7 @@ public class Expense {
     private String title;
     private double expenseAmount;
     private Boolean dueMonthly; // True if the expense is to be paid monthly, false otherwise
+    // maybe add a date too?
 
     public Expense(String title, double expenseAmount, Boolean status) {
         this.title = title;
@@ -14,11 +15,6 @@ public class Expense {
         this.dueMonthly = status;
     }
 
-    public void isMonthlyExpense() {
-        if (this.dueMonthly) {
-            MonthlyExpenses.addExpense(this);
-        }
-    }
 
     public String getTitle() {
         return this.title;
@@ -26,6 +22,10 @@ public class Expense {
 
     public double getExpenseAmount() {
         return this.expenseAmount;
+    }
+
+    public Boolean getStatus() {
+        return this.dueMonthly;
     }
 
 }
