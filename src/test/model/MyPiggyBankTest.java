@@ -15,8 +15,8 @@ public class MyPiggyBankTest {
     @BeforeEach
     public void setup() {
         testAccount = new MyPiggyBank("Ella", 50);
-        testExpenseRent = new Expense("Rent", 50, true);
-        testExpenseHair = new Expense("Hair", 20, false);
+        testExpenseRent = new Expense("Rent", 50, true, "Needs");
+        testExpenseHair = new Expense("Hair", 20, false, "Shopping");
     }
 
     @Test

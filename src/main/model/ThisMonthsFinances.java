@@ -3,19 +3,34 @@ package model;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import model.MyPiggyBank;
+
+//TODO: This class needs some cleaning up
 
 //Represents the monthly expenses for the current month that have been or are yet to be paid
-public class ThisMonthsExpenses extends MonthlyExpenses {
+public class ThisMonthsFinances extends MonthlyFinances {
 
     private ArrayList<Expense> overdueExpenses;
     private Calendar rightNow = Calendar.getInstance();
     private ArrayList<Expense> thisMonthsExpenses;
+    private double thisMonthsSaving;
+    private double thisMonthsSpending;
 
-    public ThisMonthsExpenses() {
+    public ThisMonthsFinances() {
         thisMonthsExpenses = new ArrayList<>();
         overdueExpenses = new ArrayList<>();
     }
+
+    //check if this month's income is more or less than usual.
+    //divide into spending and saving categories
+    public void thisMonthsIncome(double income) {
+        if (income >= monthlyIncome) {
+            thisMonthsSaving = income * percentToSave;
+        } else {
+            thisMonthsSaving = income * percentToSaveRoughMonth;
+        }
+        thisMonthsSpending = income - thisMonthsSaving;
+    }
+
 
     // REQUIRES: Expense e is in ThisMonthsExpenses
     // This method should remove the given expense from ThisMonthsExpenses but NOT from Monthly
@@ -35,10 +50,30 @@ public class ThisMonthsExpenses extends MonthlyExpenses {
                     thisMonthsExpenses.remove(e);
                 }
             }
-            for (Expense e : MonthlyExpenses.monthlyExpenses) {
+            for (Expense e : MonthlyFinances.monthlyFinances) {
                 thisMonthsExpenses.add(e);
             }
         }
+    }
+
+    //Getter for overdueExpenses
+    public ArrayList<Expense> getOverdueExpenses() {
+        return overdueExpenses;
+    }
+
+    //Getter for thisMonthsExpenses
+    public ArrayList<Expense> getThisMonthsExpenses() {
+        return thisMonthsExpenses;
+    }
+
+    //Getter for thisMonthsSaving
+    public double getThisMonthsSaving() {
+        return thisMonthsSaving;
+    }
+
+    //Getter for thisMonthsSpending
+    public double getThisMonthsSpending() {
+        return thisMonthsSpending;
     }
 }
 

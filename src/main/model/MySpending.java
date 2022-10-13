@@ -11,31 +11,35 @@ import java.util.HashMap;
 public class MySpending {
 
     private String month;
-    private Map<String, List<Expense>> map;
+    private static Map<String, List<Expense>> map;
 
     public MySpending(String month) {
         this.month = month;
         Map<String, List<Expense>> map = new HashMap<>();
-        List<Expense> monthlyPayments = new ArrayList<>();
-        List<Expense> leisure = new ArrayList<>();
-        List<Expense> groceries = new ArrayList<>();
-        List<Expense> restaurants = new ArrayList<>();
-        List<Expense> necessities = new ArrayList<>();
+        List<Expense> needs = new ArrayList<>();
+        List<Expense> fun = new ArrayList<>();
+        List<Expense> food = new ArrayList<>();
+        List<Expense> shopping = new ArrayList<>();
 
-        map.put("Monthly Payments", monthlyPayments);
-        map.put("Leisure", leisure);
-        map.put("Groceries", groceries);
-        map.put("Restaurants", restaurants);
-        map.put("Necessities", necessities);
+        map.put("Needs", needs);
+        map.put("Fun", fun);
+        map.put("Food", food);
+        map.put("Shopping", shopping);
     }
 
-    public void addExpenseToMySpending(Expense e, String key) {
+    // REQUIRES: key is one of Needs, Fun, Food, or Shopping
+    // MODIFIES: this
+    // EFFECTS: adds expense e to its corresponding locker in MySpending
+    public static void addExpenseToMySpending(Expense e) {
+        String key = e.getCategory();
         List<Expense> findLocker = map.get(key);
         findLocker.add(e);
     }
 
-    // I want to be able to return the map corresponding to the given month
-    public Map<String, List<Expense>> getMap(String month) {
-        return null;
+    // REQUIRES: key is one of Needs, Fun, Food, or Shopping
+    // EFFECTS: returns the list of expenses from inside the locker with the given key
+    public List<Expense> getCategories(String key) {
+        List<Expense> findLocker = map.get(key);
+        return findLocker;
     }
 }

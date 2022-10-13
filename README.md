@@ -18,9 +18,14 @@ How much can I be spending on the weekends with my friends? I've asked myself th
 *The College Student's Piggy Bank* is to make these decisions easier with visuals, goal setting, and recommendations.
 
 > ## User Stories
+> ### For P1:
 > - As a user, I want to be able to create a new monthly expense and add it to a list of monthly expenses
-> - As a user, I want to divide my monthly income into saving and spending categories
 > - As a user, I want to be able to see an up-to-date amount in my bank account
+> - As a user, I want to remove monthly expenses from this month's expenses as I pay them
+> - As a user, I want to divide my monthly income into saving and spending categories
+> - As a user, I want to save my paid expenses into categories of types of purchases
+>
+> ### Goals For Later:
 > - As a user, I want to see a visual representation of my spending habits
 > - As a user, I want to apply interest to loans that I have given to my friends
-> - As a user, I want to remove monthly expenses from this month's expenses as I pay them
+> - As a user, I want to know when I paid certain expenses

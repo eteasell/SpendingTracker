@@ -1,6 +1,7 @@
 package model;
 
 import ui.MyPiggyBankApp;
+import model.MySpending;
 
 // Represents a bank account having an owner and an currentBalance
 public class MyPiggyBank {
@@ -16,18 +17,28 @@ public class MyPiggyBank {
         currentBalance = initialBalance;
     }
 
+    // REQUIRES: e.getExpenseAmount <= currentBalance
+    // MODIFIES: this, MySpending
+    // EFFECTS: pays an expense by subtracting its amount from currentBalance and adds expense to MySpending
+    public void pay(Expense e) {
+        this.currentBalance = this.currentBalance - e.getExpenseAmount();
+        MySpending.addExpenseToMySpending(e);
+    }
+
+    //REQUIRES: amount > zero
+    //MODIFIES: this
+    // EFFECTS: increases current balance by amount. Separate from monthly income.
+    public void addAmountToPiggyBank(double amount) {
+        currentBalance = currentBalance + amount;
+    }
+
+    // EFFECTS: Getter for Owner
     public String getOwner() {
         return this.owner;
     }
 
+    // EFFECTS: Getter for currentBalance
     public double getCurrentBalance() {
         return this.currentBalance;
-    }
-
-    // REQUIRES: e.getExpenseAmount >= currentBalance
-    // MODIFIES: this
-    // EFFECTS: pays an expense by subtracting its amount from currentBalance
-    public void pay(Expense e) {
-        this.currentBalance = this.currentBalance - e.getExpenseAmount();
     }
 }
