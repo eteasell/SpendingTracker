@@ -29,6 +29,7 @@ public class MySpendingTest {
     @Test
     public void testAddExpenseToMySpendingTwice () {
         MySpending.addExpenseToMySpending(testExpense);
+        MySpending.addExpenseToMySpending(testExpense);
         List<Expense> testList = testSpending.getCategories("Food");
         assertTrue(testList.contains(testExpense));
         assertEquals(2, testList.size());
