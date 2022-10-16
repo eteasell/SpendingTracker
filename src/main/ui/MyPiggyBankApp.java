@@ -3,7 +3,6 @@ package ui;
 import model.*;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Scanner;
 
 // MyPiggyBank application for user interaction
@@ -17,11 +16,11 @@ public class MyPiggyBankApp {
     private MonthlyFinances myMonthlyFinances;
     private MySpending mySpending;
     private ThisMonthsFinances thisMonth;
-    //private Calendar rightNow;
 
     // EFFECTS: run the PiggyBank application
     public MyPiggyBankApp() {
         myMonthlyFinances = new MonthlyFinances();
+        thisMonth = new ThisMonthsFinances();
         mySpending = new MySpending();
         runPiggyBank();
     }
@@ -109,8 +108,8 @@ public class MyPiggyBankApp {
         System.out.println("\tShopping");
         String category = input.next();
         Expense expense = new Expense(name, amount, true, category);
-        myMonthlyFinances.addExpense(expense);
-        thisMonth.addToThisMonthsExpenses(expense);
+        this.myMonthlyFinances.addExpense(expense);
+        this.thisMonth.addToThisMonthsExpenses(expense);
         System.out.println("Expense added!");
     }
 
@@ -140,6 +139,7 @@ public class MyPiggyBankApp {
         int answer = input.nextInt();
         Expense e = thisMonth.getThisMonthsExpenses().get(answer);
         myPiggyBank.pay(e);
+        System.out.println("Expense paid!");
     }
 
     public void seeMySpending() {
