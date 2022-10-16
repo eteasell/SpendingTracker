@@ -23,7 +23,7 @@ public class MyPiggyBankTest {
         testAccount = new MyPiggyBank("Ella", 50);
         testExpenseRent = new Expense("Rent", 50, true, "Needs");
         testExpenseHair = new Expense("Hair", 20, false, "Shopping");
-        testSpending = new MySpending("October");
+        testSpending = new MySpending();
         testFinances = new ThisMonthsFinances();
     }
 

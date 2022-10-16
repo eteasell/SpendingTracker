@@ -6,8 +6,8 @@ import java.util.ArrayList;
 public class MonthlyFinances {
     protected static ArrayList<Expense> monthlyFinances;
     protected double monthlyIncome;
-    protected int percentToSave; //percent of monthly income that should be put into savings
-    protected int percentToSaveRoughMonth; // percent of monthly income to put into savings when income is low
+    protected double percentToSave; //percent of monthly income that should be put into savings
+    protected double percentToSaveRoughMonth; // percent of monthly income to put into savings when income is low
 
     public MonthlyFinances() {
         monthlyFinances = new ArrayList<>();
@@ -46,12 +46,12 @@ public class MonthlyFinances {
     }
 
     // EFFECTS: Getter for percentToSave
-    public int getPercentToSave() {
+    public double getPercentToSave() {
         return this.percentToSave;
     }
 
     // EFFECTS: Getter for percentToSaveRoughMonth
-    public int getPercentToSaveRoughMonth() {
+    public double getPercentToSaveRoughMonth() {
         return this.percentToSaveRoughMonth;
     }
 }

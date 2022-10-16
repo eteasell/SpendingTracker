@@ -14,7 +14,7 @@ public class MySpendingTest {
 
     @BeforeEach
     public void setup() {
-        testSpending = new MySpending("October");
+        testSpending = new MySpending();
         testExpense = new Expense("Groceries", 50, false, "Food");
     }
 

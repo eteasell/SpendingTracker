@@ -4,15 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Calendar;
 
 // Stores expenses that have been paid, and separates them into categories for future analysis
 public class MySpending {
 
-    private String month;
+    private int month;
     private static Map<String, ArrayList<Expense>> mySpending;
+    private Calendar rightNow;
 
-    public MySpending(String month) {
-        this.month = month;
+    public MySpending() {
+        this.month = rightNow.MONTH;
         this.mySpending = new HashMap<>();
         ArrayList<Expense> needs = new ArrayList<>();
         ArrayList<Expense> fun = new ArrayList<>();
