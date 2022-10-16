@@ -1,5 +1,8 @@
 package model;
 
+import model.ThisMonthsFinances;
+import model.MonthlyFinances;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;

@@ -1,10 +1,8 @@
 package ui;
 
-import model.MyPiggyBank;
-import model.MonthlyFinances;
-import model.MySpending;
-import model.Expense;
+import model.*;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Scanner;
 
@@ -18,6 +16,7 @@ public class MyPiggyBankApp {
     private MyPiggyBank myPiggyBank;
     private MonthlyFinances myMonthlyFinances;
     private MySpending mySpending;
+    private ThisMonthsFinances thisMonth;
     //private Calendar rightNow;
 
     // EFFECTS: run the PiggyBank application
@@ -37,7 +36,7 @@ public class MyPiggyBankApp {
         while (keepGoing) {
             displayMenu();
             command = input.next();
-            command = command.toLowerCase();
+            //command = command.toLowerCase();
 
             if (command.equals("q")) {
                 keepGoing = false;
@@ -61,7 +60,7 @@ public class MyPiggyBankApp {
         myPiggyBank = new MyPiggyBank(ownerName, initialValue);
         System.out.println("\nPlease enter your set monthly income, or 0 if none");
         double incomeValue = input.nextDouble();
-        myMonthlyFinances.setMonthlyIncome(incomeValue);
+        MonthlyFinances.setMonthlyIncome(incomeValue);
         input.useDelimiter("\n");
     }
 
@@ -69,7 +68,6 @@ public class MyPiggyBankApp {
     private void displayMenu() { //* code format inspired from TellerApp example
         System.out.println("\nSelect from:");
         System.out.println("\texpense -> add a new monthly expense");
-        System.out.println("\tsavings -> set savings settings");
         System.out.println("\tbalance -> view current balance");
         System.out.println("\tpay -> pay a one time expense");
         System.out.println("\tpayMonthly -> pay a monthly expense");
@@ -82,20 +80,18 @@ public class MyPiggyBankApp {
     private void processCommand(String command) { //* code format taken from TellerApp example
         if (command.equals("expense")) {
             newMonthlyExpense();
-        } else if (command.equals("savings")) {
-            setSavingsSettings();
         } else if (command.equals("balance")) {
-            //doTransfer();
+            showBalance();
         } else if (command.equals("pay")) {
-            //
+            payOneTimeExpense();
         } else if (command.equals("payMonthly")) {
-            //
+            payMonthlyExpense();
         } else if (command.equals("spending")) {
-            //
+            seeMySpending();
         } else if (command.equals("seeMonthly")) {
-            //
+            seeMonthly();
         } else if (command.equals("goal")) {
-            //
+            seeGoal();
         } else {
             System.out.println("Selection not valid...");
         }
@@ -114,12 +110,48 @@ public class MyPiggyBankApp {
         String category = input.next();
         Expense expense = new Expense(name, amount, true, category);
         myMonthlyFinances.addExpense(expense);
+        thisMonth.addToThisMonthsExpenses(expense);
         System.out.println("Expense added!");
     }
 
-    private void setSavingsSettings() {
-        System.out.println("\nWhat percent of your monthly income do you want to put into savings?");
-        System.out.println("\n");
+    public void showBalance() {
+        System.out.println(myPiggyBank.getCurrentBalance());
+    }
+
+    public void payOneTimeExpense() {
+        System.out.println("What do you want to call this monthly expense?");
+        String name = input.next();
+        System.out.println("What is the amount to be paid?");
+        double amount = input.nextDouble();
+        System.out.println("\nPlease select a category for this expense. Choose from:");
+        System.out.println("\tNeeds");
+        System.out.println("\tFun");
+        System.out.println("\tFood");
+        System.out.println("\tShopping");
+        String category = input.next();
+        Expense expense = new Expense(name, amount, false, category);
+        myPiggyBank.pay(expense);
+        System.out.println("Expense paid!");
+    }
+
+    public void payMonthlyExpense() {
+        System.out.println(thisMonth.getThisMonthsExpenses());
+        System.out.println("What is the number in the list of the expense you want to pay?");
+        int answer = input.nextInt();
+        Expense e = thisMonth.getThisMonthsExpenses().get(answer);
+        myPiggyBank.pay(e);
+    }
+
+    public void seeMySpending() {
+        System.out.println(mySpending);
+    }
+
+    public void seeMonthly() {
+        System.out.println(thisMonth);
+    }
+
+    public void seeGoal() {
+        System.out.println("The amount left for spending this month is " + thisMonth.getThisMonthsSpending());
     }
 }
 

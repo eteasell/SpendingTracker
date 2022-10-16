@@ -2,6 +2,7 @@ package model;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+
 import model.Expense;
 
 //Represents the monthly expenses for the current month that are yet to be paid
@@ -25,11 +26,11 @@ public class ThisMonthsFinances extends MonthlyFinances {
     // and saving categories accordingly
     public void thisMonthsIncome(double income) {
         if (income >= monthlyIncome) {
-            thisMonthsSaving = income * percentToSave;
+            this.thisMonthsSaving = income * percentToSave;
         } else {
-            thisMonthsSaving = income * percentToSaveRoughMonth;
+            this.thisMonthsSaving = income * percentToSaveRoughMonth;
         }
-        thisMonthsSpending = income - thisMonthsSaving;
+        thisMonthsSpending = income - this.thisMonthsSaving;
     }
 
 
@@ -68,7 +69,7 @@ public class ThisMonthsFinances extends MonthlyFinances {
 
     //Getter for thisMonthsSaving
     public double getThisMonthsSaving() {
-        return thisMonthsSaving;
+        return this.thisMonthsSaving;
     }
 
     //Getter for thisMonthsSpending
