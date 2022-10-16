@@ -1,7 +1,5 @@
 package model;
 
-import model.Expense;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -11,20 +9,20 @@ import java.util.HashMap;
 public class MySpending {
 
     private String month;
-    private static Map<String, List<Expense>> map;
+    private static Map<String, ArrayList<Expense>> mySpending;
 
     public MySpending(String month) {
         this.month = month;
-        Map<String, List<Expense>> map = new HashMap<>();
-        List<Expense> needs = new ArrayList<>();
-        List<Expense> fun = new ArrayList<>();
-        List<Expense> food = new ArrayList<>();
-        List<Expense> shopping = new ArrayList<>();
+        this.mySpending = new HashMap<>();
+        ArrayList<Expense> needs = new ArrayList<>();
+        ArrayList<Expense> fun = new ArrayList<>();
+        ArrayList<Expense> food = new ArrayList<>();
+        ArrayList<Expense> shopping = new ArrayList<>();
 
-        map.put("Needs", needs);
-        map.put("Fun", fun);
-        map.put("Food", food);
-        map.put("Shopping", shopping);
+        mySpending.put("Needs", needs);
+        mySpending.put("Fun", fun);
+        mySpending.put("Food", food);
+        mySpending.put("Shopping", shopping);
     }
 
     // REQUIRES: key is one of Needs, Fun, Food, or Shopping
@@ -32,14 +30,14 @@ public class MySpending {
     // EFFECTS: adds expense e to its corresponding locker in MySpending
     public static void addExpenseToMySpending(Expense e) {
         String key = e.getCategory();
-        List<Expense> findLocker = map.get(key);
+        List<Expense> findLocker = mySpending.get(key);
         findLocker.add(e);
     }
 
     // REQUIRES: key is one of Needs, Fun, Food, or Shopping
     // EFFECTS: returns the list of expenses from inside the locker with the given key
     public List<Expense> getCategories(String key) {
-        List<Expense> findLocker = map.get(key);
+        List<Expense> findLocker = mySpending.get(key);
         return findLocker;
     }
 }

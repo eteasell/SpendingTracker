@@ -2,6 +2,7 @@ package model;
 
 import ui.MyPiggyBankApp;
 import model.MySpending;
+import model.ThisMonthsFinances;
 
 // Represents a bank account having an owner and an currentBalance
 public class MyPiggyBank {
@@ -18,16 +19,17 @@ public class MyPiggyBank {
     }
 
     // REQUIRES: e.getExpenseAmount <= currentBalance
-    // MODIFIES: this, MySpending
+    // MODIFIES: this, MySpending, ThisMonthsFinances
     // EFFECTS: pays an expense by subtracting its amount from currentBalance and adds expense to MySpending
     public void pay(Expense e) {
         this.currentBalance = this.currentBalance - e.getExpenseAmount();
         MySpending.addExpenseToMySpending(e);
+        ThisMonthsFinances.payExpense(e);
     }
 
-    //REQUIRES: amount > zero
+    //REQUIRES: amount > 0
     //MODIFIES: this
-    // EFFECTS: increases current balance by amount. Separate from monthly income.
+    // EFFECTS: increases current balance by amount.
     public void addAmountToPiggyBank(double amount) {
         currentBalance = currentBalance + amount;
     }

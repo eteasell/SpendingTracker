@@ -1,27 +1,28 @@
 package model;
 
-
 import java.util.ArrayList;
 import java.util.Calendar;
+import model.Expense;
 
-//TODO: This class needs some cleaning up
-
-//Represents the monthly expenses for the current month that have been or are yet to be paid
+//Represents the monthly expenses for the current month that are yet to be paid
 public class ThisMonthsFinances extends MonthlyFinances {
 
-    private ArrayList<Expense> overdueExpenses;
+    private ArrayList<Expense> overdueExpenses; // expenses from last month that were not paid
     private Calendar rightNow = Calendar.getInstance();
-    private ArrayList<Expense> thisMonthsExpenses;
-    private double thisMonthsSaving;
-    private double thisMonthsSpending;
+    private int dayOfMonth = rightNow.DAY_OF_MONTH;
+    private static ArrayList<Expense> thisMonthsExpenses; // expenses remaining this month to be paid
+    private double thisMonthsSaving; // amount to be put into savings this month
+    private static double thisMonthsSpending; // amount to spend this month
 
     public ThisMonthsFinances() {
         thisMonthsExpenses = new ArrayList<>();
         overdueExpenses = new ArrayList<>();
     }
 
-    //check if this month's income is more or less than usual.
-    //divide into spending and saving categories
+    // REQUIRES: requires income >= 0
+    // MODIFIES: this
+    // EFFECTS: checks if this month's income is more or equal than normal, divides into spending
+    // and saving categories accordingly
     public void thisMonthsIncome(double income) {
         if (income >= monthlyIncome) {
             thisMonthsSaving = income * percentToSave;
@@ -32,27 +33,26 @@ public class ThisMonthsFinances extends MonthlyFinances {
     }
 
 
-    // REQUIRES: Expense e is in ThisMonthsExpenses
-    // This method should remove the given expense from ThisMonthsExpenses but NOT from Monthly
-    // Expenses, and subtract the expense amount from MyPiggyBank
-    public void payExpense(Expense e) {
-        MyPiggyBank.myAccount.pay(e);
-        thisMonthsExpenses.remove(e);
+    // MODIFIES: this
+    // EFFECTS: if the expense is in thisMonthsExpenses, removes the given expense from
+    // ThisMonthsExpenses but NOT from Monthly Expenses, and updates thisMonthsSpending
+    public static void payExpense(Expense e) {
+        if (thisMonthsExpenses.contains(e)) {
+            thisMonthsExpenses.remove(e);
+        }
+        thisMonthsSpending = thisMonthsSpending - e.getExpenseAmount();
     }
 
-    // This method should recognize when the first of the month hits, store any unpaid expenses
-    // as a new list 'unpaid', and reset ThisMonthsExpenses to match MonthlyExpenses again.
+    // MODIFIES: This
+    // EFFECTS: if it is the first day of the month, stores any unpaid expenses in overdueExpenses,
+    // and resets ThisMonthsExpenses to match MonthlyExpenses again.
     public void resetMonth() {
-        if ((rightNow.DAY_OF_MONTH) == 1) {
+        if ((dayOfMonth) == 1) {
             if (thisMonthsExpenses.size() > 0) {
-                for (Expense e : thisMonthsExpenses) {
-                    overdueExpenses.add(e);
-                    thisMonthsExpenses.remove(e);
-                }
+                overdueExpenses.addAll(thisMonthsExpenses);
             }
-            for (Expense e : MonthlyFinances.monthlyFinances) {
-                thisMonthsExpenses.add(e);
-            }
+            thisMonthsExpenses.removeAll(thisMonthsExpenses);
+            thisMonthsExpenses.addAll(MonthlyFinances.monthlyFinances);
         }
     }
 
@@ -74,6 +74,21 @@ public class ThisMonthsFinances extends MonthlyFinances {
     //Getter for thisMonthsSpending
     public double getThisMonthsSpending() {
         return thisMonthsSpending;
+    }
+
+    //Setter for thisMonthsSpending for testing purposes
+    public void setThisMonthsSpending(double amount) {
+        thisMonthsSpending = amount;
+    }
+
+    //Setter for rightNow for testing purposes
+    public void setDayOfMonth(int i) {
+        this.dayOfMonth = i;
+    }
+
+    //Setter for thisMonthsExpenses for testing purposes
+    public void addToThisMonthsExpenses(Expense e) {
+        thisMonthsExpenses.add(e);
     }
 }
 
