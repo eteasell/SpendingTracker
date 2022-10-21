@@ -13,18 +13,19 @@ public class MyPiggyBankApp {
 
     private Scanner input;
     private MyPiggyBank myPiggyBank;
-    private MonthlyFinances myMonthlyFinances;
     private MySpending mySpending;
-    private ThisMonthsFinances thisMonth;
+    private MonthlyFinances myMonthlyFinances;
+    private ThisMonthsFinances thisMonthsFinances;
 
-    // EFFECTS: run the PiggyBank application
+
+    // MODIFIES: this
+    // EFFECTS: starts the PiggyBank application
     public MyPiggyBankApp() {
-        myMonthlyFinances = new MonthlyFinances();
-        thisMonth = new ThisMonthsFinances();
-        mySpending = new MySpending();
         runPiggyBank();
     }
 
+    // MODIFIES: this
+    // EFFECTS: runs the application
     private void runPiggyBank() { //* Code from TellerApp example
         String command = null;
         boolean keepGoing = false;
@@ -35,7 +36,6 @@ public class MyPiggyBankApp {
         while (keepGoing) {
             displayMenu();
             command = input.next();
-            //command = command.toLowerCase();
 
             if (command.equals("q")) {
                 keepGoing = false;
@@ -61,6 +61,10 @@ public class MyPiggyBankApp {
         double incomeValue = input.nextDouble();
         MonthlyFinances.setMonthlyIncome(incomeValue);
         input.useDelimiter("\n");
+        mySpending = myPiggyBank.getMySpending();
+        myMonthlyFinances = myPiggyBank.getMyMonthlyFinances();
+        thisMonthsFinances = myPiggyBank.getThisMonthsFinances();
+        thisMonthsFinances.thisMonthsIncome(incomeValue);
     }
 
     // EFFECTS: displays menu of options to user
@@ -76,6 +80,7 @@ public class MyPiggyBankApp {
         System.out.println("\tq -> quit");
     }
 
+    // EFFECTS: processes the command given by the user
     private void processCommand(String command) { //* code format taken from TellerApp example
         if (command.equals("expense")) {
             newMonthlyExpense();
@@ -96,6 +101,8 @@ public class MyPiggyBankApp {
         }
     }
 
+    // MODIFIES: MonthlyFinances, Expense
+    // EFFECTS: adds a new monthly expense
     private void newMonthlyExpense() {
         System.out.println("What do you want to call this monthly expense?");
         String name = input.next();
@@ -108,15 +115,18 @@ public class MyPiggyBankApp {
         System.out.println("\tShopping");
         String category = input.next();
         Expense expense = new Expense(name, amount, true, category);
-        this.myMonthlyFinances.addExpense(expense);
-        this.thisMonth.addToThisMonthsExpenses(expense);
+        myMonthlyFinances.addExpense(expense);
+        thisMonthsFinances.addToThisMonthsExpenses(expense);
         System.out.println("Expense added!");
     }
 
+    // EFFECTS: prints the current balance
     public void showBalance() {
         System.out.println(myPiggyBank.getCurrentBalance());
     }
 
+    // MODIFIES: MyPiggyBank, Expense
+    // EFFECTS: creates and pays a one time expense
     public void payOneTimeExpense() {
         System.out.println("What do you want to call this monthly expense?");
         String name = input.next();
@@ -133,25 +143,35 @@ public class MyPiggyBankApp {
         System.out.println("Expense paid!");
     }
 
+    // TODO: how can i show my expenses by their names not the object name?
+    // MODIFIES: ThisMonthsFinances, MyPiggyBank
+    // EFFECTS: removes the expense from ThisMonthsFinances and pay it
     public void payMonthlyExpense() {
-        System.out.println(thisMonth.getThisMonthsExpenses());
+        System.out.println(thisMonthsFinances.getThisMonthsExpenses());
         System.out.println("What is the number in the list of the expense you want to pay?");
         int answer = input.nextInt();
-        Expense e = thisMonth.getThisMonthsExpenses().get(answer);
+        Expense e = thisMonthsFinances.getThisMonthsExpenses().get(answer);
         myPiggyBank.pay(e);
         System.out.println("Expense paid!");
     }
 
+    // EFFECTS: getter for MySpending
     public void seeMySpending() {
-        System.out.println(mySpending);
+        System.out.println(mySpending.getCategories("Food"));
+        System.out.println(mySpending.getCategories("Needs"));
+        System.out.println(mySpending.getCategories("Shopping"));
+        System.out.println(mySpending.getCategories("Fun"));
     }
 
+    // EFFECTS getter for thisMonthsFinances
     public void seeMonthly() {
-        System.out.println(thisMonth);
+        System.out.println(thisMonthsFinances.getMonthlyFinances());
+        System.out.println(thisMonthsFinances.getOverdueExpenses());
     }
 
+    // EFFECTS: getter for the amount left to be spent this month
     public void seeGoal() {
-        System.out.println("The amount left for spending this month is " + thisMonth.getThisMonthsSpending());
+        System.out.println("The amount left for spending this month is " + thisMonthsFinances.getThisMonthsSpending());
     }
 }
 

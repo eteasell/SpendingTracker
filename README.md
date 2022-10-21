@@ -24,6 +24,10 @@ How much can I be spending on the weekends with my friends? I've asked myself th
 > - As a user, I want to remove monthly expenses from this month's expenses as I pay them
 > - As a user, I want to divide my monthly income into saving and spending categories
 > - As a user, I want to save my paid expenses into categories of types of purchases
+> 
+> ### For P2:
+> - As a user, I want to be prompted to save my account data before closing the application
+> - As a user, I want to choose between creating a new account or loading my previously saved account
 >
 > ### Goals For Later:
 > - As a user, I want to see a visual representation of my spending habits

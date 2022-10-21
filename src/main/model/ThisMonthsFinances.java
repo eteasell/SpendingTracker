@@ -13,7 +13,7 @@ public class ThisMonthsFinances extends MonthlyFinances {
     private int dayOfMonth = rightNow.DAY_OF_MONTH;
     private static ArrayList<Expense> thisMonthsExpenses; // expenses remaining this month to be paid
     private double thisMonthsSaving; // amount to be put into savings this month
-    private static double thisMonthsSpending; // amount to spend this month
+    private static double thisMonthsSpending; // amount left to spend this month
 
     public ThisMonthsFinances() {
         thisMonthsExpenses = new ArrayList<>();

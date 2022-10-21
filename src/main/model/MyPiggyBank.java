@@ -8,7 +8,10 @@ import model.ThisMonthsFinances;
 public class MyPiggyBank {
     private String owner;
     private double currentBalance;
-    protected static MyPiggyBank myAccount;
+   // protected static MyPiggyBank myAccount;
+    private MySpending mySpending;
+    private MonthlyFinances myMonthlyFinances;
+    private ThisMonthsFinances thisMonthsFinances;
 
     // REQUIRES: owner has length >= 1, currentBalance must be >= 0
     // MODIFIES: this
@@ -16,6 +19,9 @@ public class MyPiggyBank {
     public MyPiggyBank(String owner, double initialBalance) {
         this.owner = owner;
         currentBalance = initialBalance;
+        this.mySpending = new MySpending();
+        this.myMonthlyFinances = new MonthlyFinances();
+        this.thisMonthsFinances = new ThisMonthsFinances();
     }
 
     // REQUIRES: e.getExpenseAmount <= currentBalance
@@ -23,8 +29,8 @@ public class MyPiggyBank {
     // EFFECTS: pays an expense by subtracting its amount from currentBalance and adds expense to MySpending
     public void pay(Expense e) {
         this.currentBalance = this.currentBalance - e.getExpenseAmount();
-        MySpending.addExpenseToMySpending(e);
-        ThisMonthsFinances.payExpense(e);
+        mySpending.addExpenseToMySpending(e);
+        thisMonthsFinances.payExpense(e);
     }
 
     //REQUIRES: amount > 0
@@ -42,5 +48,20 @@ public class MyPiggyBank {
     // EFFECTS: Getter for currentBalance
     public double getCurrentBalance() {
         return this.currentBalance;
+    }
+
+    // EFFECTS: Getter for mySpending
+    public MySpending getMySpending() {
+        return this.mySpending;
+    }
+
+    // EFFECTS: Getter for myMonthlyFinances
+    public MonthlyFinances getMyMonthlyFinances() {
+        return this.myMonthlyFinances;
+    }
+
+    // EFFECTS: Getter for thisMonthsFinances
+    public ThisMonthsFinances getThisMonthsFinances() {
+        return this.thisMonthsFinances;
     }
 }
