@@ -34,4 +34,8 @@ public class Expense {
         return this.dueMonthly;
     }
 
+    @Override
+    public String toString() {
+        return this.title;
+    }
 }

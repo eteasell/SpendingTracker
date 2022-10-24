@@ -143,14 +143,13 @@ public class MyPiggyBankApp {
         System.out.println("Expense paid!");
     }
 
-    // TODO: how can i show my expenses by their names not the object name?
     // MODIFIES: ThisMonthsFinances, MyPiggyBank
     // EFFECTS: removes the expense from ThisMonthsFinances and pay it
     public void payMonthlyExpense() {
         System.out.println(thisMonthsFinances.getThisMonthsExpenses());
-        System.out.println("What is the number in the list of the expense you want to pay?");
-        int answer = input.nextInt();
-        Expense e = thisMonthsFinances.getThisMonthsExpenses().get(answer);
+        System.out.println("What is the name of the expense you want to pay?");
+        String answer = input.next();
+        Expense e = thisMonthsFinances.getSingleExpense(answer);
         myPiggyBank.pay(e);
         System.out.println("Expense paid!");
     }

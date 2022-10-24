@@ -57,6 +57,16 @@ public class ThisMonthsFinances extends MonthlyFinances {
         }
     }
 
+    // EFFECTS: returns expense in list that natches name
+    public Expense getSingleExpense(String name) {
+        for (Expense e : thisMonthsExpenses) {
+            if (name == e.getTitle()) {
+                return e;
+            }
+        }
+        return null;
+    }
+
     //Getter for overdueExpenses
     public ArrayList<Expense> getOverdueExpenses() {
         return overdueExpenses;

@@ -95,4 +95,14 @@ public class ThisMonthsFinancesTest {
         assertEquals(1, testFinances.getMonthlyFinances().size());
         assertTrue(testFinances.getThisMonthsExpenses().contains(testExpenseCar));
     }
+
+    @Test
+    public void testGetSingleExpensePresent() {
+        assertEquals(testExpenseCar, testFinances.getSingleExpense("Car"));
+    }
+
+    @Test
+    public void testGetSingleExpenseNotPresent() {
+        assertEquals(null, testFinances.getSingleExpense("Rent"));
+    }
 }
