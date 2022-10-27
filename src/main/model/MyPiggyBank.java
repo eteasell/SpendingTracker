@@ -80,7 +80,9 @@ public class MyPiggyBank implements Writable {
         json.put("mySpendingMonth", mySpending.getMonth());
         json.put("myMonthlyFinances", myMonthlyFinancesToJson());
         json.put("myMonthlyFinancesData", myMonthlyFinancesDataToJson());
-        json.put("thisMonthsFinances", this.thisMonthsFinances);
+        json.put("thisMonthsExpenses", thisMonthsExpensesToJson());
+        json.put("overdueExpenses", overdueExpensesToJson());
+        json.put("thisMonthsFinancesData", thisMonthsFinancesDataToJson());
         return json;
     }
 
@@ -109,6 +111,7 @@ public class MyPiggyBank implements Writable {
         return jsonArray;
     }
 
+    // EFFECTS: returns just the list of myMonthlyFinances in the PiggyBank as a JSONArray
     private JSONArray myMonthlyFinancesToJson() {
         JSONArray jsonArray = new JSONArray();
 
@@ -119,11 +122,41 @@ public class MyPiggyBank implements Writable {
         return jsonArray;
     }
 
+    // EFFECTS: returns the non-list fields of data from myMonthlyFinances in the PiggyBank as a JSONObject
     private JSONObject myMonthlyFinancesDataToJson() {
         JSONObject json = new JSONObject();
         json.put("monthlyIncome", myMonthlyFinances.getMonthlyIncome());
         json.put("percentToSave", myMonthlyFinances.getPercentToSave());
         json.put("percentToSaveRoughMonth", myMonthlyFinances.getPercentToSaveRoughMonth());
+
+        return json;
+    }
+
+    // EFFECTS: returns just thisMonthsExpenses from thisMonthsFinances in the PiggyBank as a JSONArray
+    private JSONArray thisMonthsExpensesToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Expense e : thisMonthsFinances.getThisMonthsExpenses()) {
+            jsonArray.put(e.toJson());
+        }
+        return jsonArray;
+    }
+
+    // EFFECTS: returns just overdueExpenses from thisMonthsFinances in the PiggyBank as a JSONArray
+    private JSONArray overdueExpensesToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Expense e : thisMonthsFinances.getOverdueExpenses()) {
+            jsonArray.put(e.toJson());
+        }
+        return jsonArray;
+    }
+
+    // EFFECTS: returns the non-list fields of data from thisMonthsFinances in the PiggyBank as a JSONObject
+    private JSONObject thisMonthsFinancesDataToJson() {
+        JSONObject json = new JSONObject();
+        json.put("saving", thisMonthsFinances.getThisMonthsSaving());
+        json.put("spending", thisMonthsFinances.getThisMonthsSpending());
 
         return json;
     }

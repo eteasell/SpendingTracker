@@ -7,8 +7,11 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
-// Code in this class is taken from JsonSerializationDemo program provided in the course material
+// Represents a writer to convert MyPiggyBank into a JSON file
 public class JsonWriter {
+
+    // Code in this class is taken from JsonSerializationDemo program provided in the course material
+
     private static final int TAB = 4;
     private PrintWriter writer;
     private String destination;
