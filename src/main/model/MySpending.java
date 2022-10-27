@@ -11,10 +11,9 @@ public class MySpending {
 
     private int month;
     private static Map<String, ArrayList<Expense>> mySpending;
-    private Calendar rightNow;
 
     public MySpending() {
-        this.month = rightNow.MONTH;
+        this.month = Calendar.MONTH;
         this.mySpending = new HashMap<>();
         ArrayList<Expense> needs = new ArrayList<>();
         ArrayList<Expense> fun = new ArrayList<>();
@@ -44,5 +43,9 @@ public class MySpending {
     }
 
 
+    // Getter for month
+    public int getMonth() {
+        return this.month;
+    }
 
 }

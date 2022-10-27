@@ -1,14 +1,19 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistance.Writable;
 import ui.MyPiggyBankApp;
 import model.MySpending;
 import model.ThisMonthsFinances;
 
+import java.util.ArrayList;
+import java.util.List;
+
 // Represents a bank account having an owner and an currentBalance
-public class MyPiggyBank {
+public class MyPiggyBank implements Writable {
     private String owner;
     private double currentBalance;
-   // protected static MyPiggyBank myAccount;
     private MySpending mySpending;
     private MonthlyFinances myMonthlyFinances;
     private ThisMonthsFinances thisMonthsFinances;
@@ -64,4 +69,63 @@ public class MyPiggyBank {
     public ThisMonthsFinances getThisMonthsFinances() {
         return this.thisMonthsFinances;
     }
+
+    // EFFECTS: Creates a JSON array for this PiggyBank
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", this.owner);
+        json.put("currentBalance", this.currentBalance);
+        json.put("mySpending", mySpendingToJson());
+        json.put("mySpendingMonth", mySpending.getMonth());
+        json.put("myMonthlyFinances", myMonthlyFinancesToJson());
+        json.put("myMonthlyFinancesData", myMonthlyFinancesDataToJson());
+        json.put("thisMonthsFinances", this.thisMonthsFinances);
+        return json;
+    }
+
+    // EFFECTS: returns mySpending in this MyPiggyBank as a JSON array
+    private JSONArray mySpendingToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        List<Expense> myNeeds = mySpending.getCategories("Needs");
+        List<Expense> myFun = mySpending.getCategories("Fun");
+        List<Expense> myFood = mySpending.getCategories("Food");
+        List<Expense> myShopping = mySpending.getCategories("Shopping");
+
+        for (Expense e : myNeeds) {
+            jsonArray.put(e.toJson());
+        }
+        for (Expense e : myFun) {
+            jsonArray.put(e.toJson());
+        }
+        for (Expense e : myFood) {
+            jsonArray.put(e.toJson());
+        }
+        for (Expense e : myShopping) {
+            jsonArray.put(e.toJson());
+        }
+
+        return jsonArray;
+    }
+
+    private JSONArray myMonthlyFinancesToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Expense e : myMonthlyFinances.getMonthlyFinances()) {
+            jsonArray.put(e.toJson());
+        }
+
+        return jsonArray;
+    }
+
+    private JSONObject myMonthlyFinancesDataToJson() {
+        JSONObject json = new JSONObject();
+        json.put("monthlyIncome", myMonthlyFinances.getMonthlyIncome());
+        json.put("percentToSave", myMonthlyFinances.getPercentToSave());
+        json.put("percentToSaveRoughMonth", myMonthlyFinances.getPercentToSaveRoughMonth());
+
+        return json;
+    }
+
 }
