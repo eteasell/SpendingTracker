@@ -1,28 +1,58 @@
 {
     "thisMonthsFinancesData": {
         "saving": 0,
-        "spending": -139
+        "spending": -839
     },
-    "thisMonthsExpenses": [],
+    "thisMonthsExpenses": [{
+        "expenseAmount": 200,
+        "dueMonthly": true,
+        "title": "water",
+        "category": "Needs"
+    }],
     "mySpendingMonth": 2,
-    "currentBalance": 4950,
+    "currentBalance": 4250,
     "name": "Test",
     "myMonthlyFinancesData": {
         "percentToSave": 0.2,
         "percentToSaveRoughMonth": 0.1,
         "monthlyIncome": 100
     },
-    "overdueExpenses": [],
+    "overdueExpenses": [{
+        "expenseAmount": 200,
+        "dueMonthly": true,
+        "title": "water",
+        "category": "Needs"
+    }],
     "myMonthlyFinances": [{
         "expenseAmount": 500,
         "dueMonthly": true,
         "title": "rent",
         "category": "Needs"
     }],
-    "mySpending": [{
-        "expenseAmount": 50,
-        "dueMonthly": false,
-        "title": "hair",
-        "category": "Shopping"
-    }]
+    "mySpending": [
+        {
+            "expenseAmount": 500,
+            "dueMonthly": true,
+            "title": "rent",
+            "category": "Needs"
+        },
+        {
+            "expenseAmount": 100,
+            "dueMonthly": false,
+            "title": "club",
+            "category": "Fun"
+        },
+        {
+            "expenseAmount": 100,
+            "dueMonthly": false,
+            "title": "save-on",
+            "category": "Food"
+        },
+        {
+            "expenseAmount": 50,
+            "dueMonthly": false,
+            "title": "hair",
+            "category": "Shopping"
+        }
+    ]
 }

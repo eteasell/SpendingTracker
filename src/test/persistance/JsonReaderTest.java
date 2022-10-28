@@ -25,7 +25,7 @@ public class JsonReaderTest extends JsonTest {
 
 
     @Test
-    void testReaderEmptyWorkRoom() {
+    void testReaderEmptyPiggyBank() {
         JsonReader reader = new JsonReader("./data/testReaderEmpty.json");
         try {
             MyPiggyBank account = reader.read();
@@ -45,11 +45,17 @@ public class JsonReaderTest extends JsonTest {
             assertEquals(0, account.getMySpending().getCategories("Needs").size());
             assertEquals(1, account.getMySpending().getCategories("Shopping").size());
             assertEquals(1, account.getMyMonthlyFinances().getMonthlyFinances().size());
+            assertEquals(1, account.getThisMonthsFinances().getThisMonthsExpenses().size());
+            assertEquals(1, account.getThisMonthsFinances().getOverdueExpenses().size());
             assertEquals(4950, account.getCurrentBalance());
             checkExpense("rent", 500, true, "Needs",
                     account.getMyMonthlyFinances().getMonthlyFinances().get(0));
             checkExpense("hair", 50, false, "Shopping",
                     account.getMySpending().getCategories("Shopping").get(0));
+            checkExpense("heat", 500, true, "Needs",
+                    account.getThisMonthsFinances().getThisMonthsExpenses().get(0));
+            checkExpense("car", 500, true, "Needs",
+                    account.getThisMonthsFinances().getOverdueExpenses().get(0));
         } catch (IOException e) {
             fail("Couldn't read from file");
         }

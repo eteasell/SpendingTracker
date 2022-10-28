@@ -101,6 +101,7 @@ public class MyPiggyBankApp {
         System.out.println("\tspending -> view my spending");
         System.out.println("\tseeMonthly -> see my monthly expenses");
         System.out.println("\tgoal -> see this months spending goal");
+        System.out.println("\tthisMonth -> see this months overdue and on-time expenses");
         System.out.println("\tq -> quit");
     }
 
@@ -122,6 +123,8 @@ public class MyPiggyBankApp {
             seeMonthly();
         } else if (command.equals("goal")) {
             seeGoal();
+        } else if (command.equals("thisMonth")) {
+            thisMonth();
         } else {
             System.out.println("Selection not valid...");
         }
@@ -209,7 +212,32 @@ public class MyPiggyBankApp {
         System.out.println("Amount added! Your balance is: " + myPiggyBank.getCurrentBalance());
     }
 
-    // EFFECTS: saves the workroom to file
+    public void thisMonth() {
+        System.out.println("Would you like to add any overdue expenses from last month?");
+        System.out.println("Type 'y for yes or 'n' for no...");
+        String answer = input.next();
+        if (answer.equals("y")) {
+            System.out.println("What do you want to call this overdue expense?");
+            String name = input.next();
+            System.out.println("What is the amount to be paid?");
+            double amount = input.nextDouble();
+            System.out.println("\nPlease select a category for this expense. Choose from:");
+            System.out.println("\tNeeds");
+            System.out.println("\tFun");
+            System.out.println("\tFood");
+            System.out.println("\tShopping");
+            String category = input.next();
+            Expense expense = new Expense(name, amount, false, category);
+            thisMonthsFinances.addOverdueExpense(expense);
+            System.out.println("Overdue expense added!");
+        }
+        System.out.println("Overdue Expenses from last month:");
+        System.out.println(thisMonthsFinances.getOverdueExpenses());
+        System.out.println("Expenses left to be paid this month:");
+        System.out.println(thisMonthsFinances.getThisMonthsExpenses());
+    }
+
+    // EFFECTS: saves the piggy bank to file
     private void savePiggyBank() { //*
         try {
             jsonWriter.open();

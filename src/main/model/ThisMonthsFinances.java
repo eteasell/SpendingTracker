@@ -9,7 +9,7 @@ public class ThisMonthsFinances extends MonthlyFinances {
     private ArrayList<Expense> overdueExpenses; // expenses from last month that were not paid
     private Calendar rightNow = Calendar.getInstance();
     private int dayOfMonth = rightNow.DAY_OF_MONTH;
-    private static ArrayList<Expense> thisMonthsExpenses; // expenses remaining this month to be paid
+    private ArrayList<Expense> thisMonthsExpenses; // expenses remaining this month to be paid
     private double thisMonthsSaving; // amount to be put into savings this month
     private static double thisMonthsSpending; // amount left to spend this month
 
@@ -35,10 +35,8 @@ public class ThisMonthsFinances extends MonthlyFinances {
     // MODIFIES: this
     // EFFECTS: if the expense is in thisMonthsExpenses, removes the given expense from
     // ThisMonthsExpenses but NOT from Monthly Expenses, and updates thisMonthsSpending
-    public static void payExpense(Expense e) {
-        if (thisMonthsExpenses.contains(e)) {
-            thisMonthsExpenses.remove(e);
-        }
+    public void payExpense(Expense e) {
+        this.thisMonthsExpenses.remove(e);
         thisMonthsSpending = thisMonthsSpending - e.getExpenseAmount();
     }
 
