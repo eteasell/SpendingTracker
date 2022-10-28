@@ -32,12 +32,12 @@ public class JsonWriterTest extends JsonTest {
     void testWriterEmptyAccount() {
         try {
             MyPiggyBank account = new MyPiggyBank("Test", 5000);
-            JsonWriter writer = new JsonWriter("./data/testWriterEmptyWorkroom.json");
+            JsonWriter writer = new JsonWriter("./data/testWriterEmpty.json");
             writer.open();
             writer.write(account);
             writer.close();
 
-            JsonReader reader = new JsonReader("./data/testWriterEmptyWorkroom.json");
+            JsonReader reader = new JsonReader("./data/testWriterEmpty.json");
             account = reader.read();
             assertEquals("Test", account.getOwner());
             assertEquals(5000, account.getCurrentBalance());

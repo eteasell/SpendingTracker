@@ -1,0 +1,18 @@
+{
+  "thisMonthsFinancesData": {
+    "saving": 0,
+    "spending": -39
+  },
+  "thisMonthsExpenses": [],
+  "mySpendingMonth": 2,
+  "currentBalance": 5000,
+  "name": "Test",
+  "myMonthlyFinancesData": {
+    "percentToSave": 0.2,
+    "percentToSaveRoughMonth": 0.1,
+    "monthlyIncome": 100
+  },
+  "overdueExpenses": [],
+  "myMonthlyFinances": [],
+  "mySpending": []
+}

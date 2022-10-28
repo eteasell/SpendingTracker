@@ -5,7 +5,9 @@ import persistance.JsonReader;
 import persistance.JsonWriter;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 
 // MyPiggyBank application for user interaction
@@ -14,7 +16,7 @@ public class MyPiggyBankApp {
     // NOTE: Some code in this class is written using the sample TellerApp project or the JsonSerializationDemo
     // I acknowledge these sources, and I will note '//*' when I use its code.
 
-    private static final String JSON_STORE = "./data/workroom.json"; //*
+    private static final String JSON_STORE = "./data/MyPiggyBankAccount.json"; //*
     private Scanner input;
     private MyPiggyBank myPiggyBank;
     private MySpending mySpending;
@@ -49,7 +51,7 @@ public class MyPiggyBankApp {
                 System.out.println("\nWould you like to save before you go?");
                 System.out.println("\nType 'y' for yes and 'n' for no");
                 String answer = input.next();
-                if (answer == "y") {
+                if (Objects.equals(answer, "y")) {
                     savePiggyBank();
                 }
                 keepGoing = false;
@@ -66,19 +68,26 @@ public class MyPiggyBankApp {
     private void initialize() {
         System.out.println("\nWelcome to the College Student's PiggyBank!");
         input = new Scanner(System.in);
-        System.out.println("\nPlease enter your name");
-        String ownerName = input.nextLine();
-        System.out.println("\nPlease enter the current amount in your bank account");
-        double initialValue = input.nextDouble();
-        myPiggyBank = new MyPiggyBank(ownerName, initialValue);
-        System.out.println("\nPlease enter your set monthly income, or 0 if none");
-        double incomeValue = input.nextDouble();
-        MonthlyFinances.setMonthlyIncome(incomeValue);
-        input.useDelimiter("\n");
-        mySpending = myPiggyBank.getMySpending();
-        myMonthlyFinances = myPiggyBank.getMyMonthlyFinances();
-        thisMonthsFinances = myPiggyBank.getThisMonthsFinances();
-        thisMonthsFinances.thisMonthsIncome(incomeValue);
+        System.out.println("\n Type 'load' if you would like to load a saved account");
+        System.out.println("\n Type 'new' if you would like to create a new account");
+        String answer = input.next();
+        if (answer.equals("load")) {
+            loadPiggyBank();
+        } else {
+            System.out.println("\nPlease enter your name");
+            String ownerName = input.nextLine();
+            System.out.println("\nPlease enter the current amount in your bank account");
+            double initialValue = input.nextDouble();
+            myPiggyBank = new MyPiggyBank(ownerName, initialValue);
+            System.out.println("\nPlease enter your set monthly income, or 0 if none");
+            double incomeValue = input.nextDouble();
+            MonthlyFinances.setMonthlyIncome(incomeValue);
+            input.useDelimiter("\n");
+            mySpending = myPiggyBank.getMySpending();
+            myMonthlyFinances = myPiggyBank.getMyMonthlyFinances();
+            thisMonthsFinances = myPiggyBank.getThisMonthsFinances();
+            thisMonthsFinances.thisMonthsIncome(incomeValue);
+        }
     }
 
     // EFFECTS: displays menu of options to user
@@ -190,6 +199,9 @@ public class MyPiggyBankApp {
         System.out.println("The amount left for spending this month is " + thisMonthsFinances.getThisMonthsSpending());
     }
 
+    // REQUIRES: answer >= 0
+    // MODIFIES: MyPiggyBank
+    // EFFECTS: adds the given amount to the piggy bank
     public void add() {
         System.out.println("How much would you like to add?");
         double answer = input.nextDouble();
@@ -206,6 +218,17 @@ public class MyPiggyBankApp {
             System.out.println("Saved " + myPiggyBank.getOwner() + "'s account to " + JSON_STORE);
         } catch (FileNotFoundException e) {
             System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads the saved PiggyBank accounts
+    private void loadPiggyBank() { //*
+        try {
+            myPiggyBank = jsonReader.read();
+            System.out.println("Loaded " + myPiggyBank.getOwner() + "'s from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
         }
     }
 }

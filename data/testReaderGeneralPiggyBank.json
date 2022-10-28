@@ -1,0 +1,28 @@
+{
+  "thisMonthsFinancesData": {
+    "saving": 0,
+    "spending": -89
+  },
+  "thisMonthsExpenses": [],
+  "mySpendingMonth": 2,
+  "currentBalance": 4950,
+  "name": "Test",
+  "myMonthlyFinancesData": {
+    "percentToSave": 0.2,
+    "percentToSaveRoughMonth": 0.1,
+    "monthlyIncome": 100
+  },
+  "overdueExpenses": [],
+  "myMonthlyFinances": [{
+    "expenseAmount": 500,
+    "dueMonthly": true,
+    "title": "rent",
+    "category": "Needs"
+  }],
+  "mySpending": [{
+    "expenseAmount": 50,
+    "dueMonthly": false,
+    "title": "hair",
+    "category": "Shopping"
+  }]
+}
