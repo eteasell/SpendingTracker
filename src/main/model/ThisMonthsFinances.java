@@ -16,8 +16,8 @@ public class ThisMonthsFinances extends MonthlyFinances {
     private static double thisMonthsSpending; // amount left to spend this month
 
     public ThisMonthsFinances() {
-        thisMonthsExpenses = new ArrayList<>();
-        overdueExpenses = new ArrayList<>();
+        this.thisMonthsExpenses = new ArrayList<>();
+        this.overdueExpenses = new ArrayList<>();
     }
 
     // REQUIRES: requires income >= 0
@@ -60,11 +60,16 @@ public class ThisMonthsFinances extends MonthlyFinances {
     // EFFECTS: returns expense in list that natches name
     public Expense getSingleExpense(String name) {
         for (Expense e : thisMonthsExpenses) {
-            if (name == e.getTitle()) {
+            if (name.equals(e.getTitle())) {
                 return e;
             }
         }
         return null;
+    }
+
+    //EFFECTS: adds an expense to overdue expenses
+    public void addOverdueExpense(Expense e) {
+        overdueExpenses.add(e);
     }
 
     //Getter for overdueExpenses
@@ -90,6 +95,11 @@ public class ThisMonthsFinances extends MonthlyFinances {
     //Setter for thisMonthsSpending for testing purposes
     public void setThisMonthsSpending(double amount) {
         thisMonthsSpending = amount;
+    }
+
+    //Setter for thisMonthsSpending for testing purposes
+    public void setThisMonthsSaving(double amount) {
+        thisMonthsSaving = amount;
     }
 
     //Setter for rightNow for testing purposes

@@ -1,26 +1,34 @@
 package ui;
 
 import model.*;
+import persistance.JsonReader;
+import persistance.JsonWriter;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 // MyPiggyBank application for user interaction
 public class MyPiggyBankApp {
 
-    // NOTE: Some code in this class is written using the sample TellerApp project as a template to guide me
-    // through building a UI. I acknowledge this source, and I will note '//*' when I use its code.
+    // NOTE: Some code in this class is written using the sample TellerApp project or the JsonSerializationDemo
+    // I acknowledge these sources, and I will note '//*' when I use its code.
 
+    private static final String JSON_STORE = "./data/workroom.json"; //*
     private Scanner input;
     private MyPiggyBank myPiggyBank;
     private MySpending mySpending;
     private MonthlyFinances myMonthlyFinances;
     private ThisMonthsFinances thisMonthsFinances;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
 
     // MODIFIES: this
     // EFFECTS: starts the PiggyBank application
     public MyPiggyBankApp() {
+        jsonWriter = new JsonWriter(JSON_STORE); //*
+        jsonReader = new JsonReader(JSON_STORE); //*
         runPiggyBank();
     }
 
@@ -38,6 +46,12 @@ public class MyPiggyBankApp {
             command = input.next();
 
             if (command.equals("q")) {
+                System.out.println("\nWould you like to save before you go?");
+                System.out.println("\nType 'y' for yes and 'n' for no");
+                String answer = input.next();
+                if (answer == "y") {
+                    savePiggyBank();
+                }
                 keepGoing = false;
             } else {
                 processCommand(command);
@@ -72,6 +86,7 @@ public class MyPiggyBankApp {
         System.out.println("\nSelect from:");
         System.out.println("\texpense -> add a new monthly expense");
         System.out.println("\tbalance -> view current balance");
+        System.out.println("\tadd -> add amount to balance");
         System.out.println("\tpay -> pay a one time expense");
         System.out.println("\tpayMonthly -> pay a monthly expense");
         System.out.println("\tspending -> view my spending");
@@ -86,6 +101,8 @@ public class MyPiggyBankApp {
             newMonthlyExpense();
         } else if (command.equals("balance")) {
             showBalance();
+        } else if (command.equals("add")) {
+            add();
         } else if (command.equals("pay")) {
             payOneTimeExpense();
         } else if (command.equals("payMonthly")) {
@@ -171,6 +188,25 @@ public class MyPiggyBankApp {
     // EFFECTS: getter for the amount left to be spent this month
     public void seeGoal() {
         System.out.println("The amount left for spending this month is " + thisMonthsFinances.getThisMonthsSpending());
+    }
+
+    public void add() {
+        System.out.println("How much would you like to add?");
+        double answer = input.nextDouble();
+        myPiggyBank.addAmountToPiggyBank(answer);
+        System.out.println("Amount added! Your balance is: " + myPiggyBank.getCurrentBalance());
+    }
+
+    // EFFECTS: saves the workroom to file
+    private void savePiggyBank() { //*
+        try {
+            jsonWriter.open();
+            jsonWriter.write(myPiggyBank);
+            jsonWriter.close();
+            System.out.println("Saved " + myPiggyBank.getOwner() + "'s account to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
     }
 }
 

@@ -1,6 +1,7 @@
 package persistance;
 
-import model.MyPiggyBank;
+import model.*;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -45,9 +46,61 @@ public class JsonReader {
         String owner = jsonObject.getString("name");
         double balance = jsonObject.getDouble("currentBalance");
         MyPiggyBank account = new MyPiggyBank(owner, balance);
-        //addThingies(wr, jsonObject);
+        addMySpending(account, jsonObject);
+        addMonthlyFinances(account, jsonObject);
+        addThisMonthsFinances(account, jsonObject);
         return account;
     }
 
-    //TODO: design functions to be called in parseMyPiggyBank to rebuild my account
+    // MODIFIES: account
+    // EFFECTS: parses mySpending from JSON object and adds it to account
+    private void addMySpending(MyPiggyBank account, JSONObject jsonObject) {
+        JSONArray jsonArray = jsonObject.getJSONArray("mySpending");
+        for (Object json : jsonArray) {
+            JSONObject nextExpense = (JSONObject) json;
+            MySpending mySpending = account.getMySpending();
+            mySpending.addExpenseToMySpending(getExpenseFromJson(nextExpense));
+        }
+    }
+
+
+    // EFFECTS: parses expense from JSON object
+    private Expense getExpenseFromJson(JSONObject jsonObject) {
+        String name = jsonObject.getString("title");
+        double amount = jsonObject.getDouble("expenseAmount");
+        boolean dueMonthly = jsonObject.getBoolean("dueMonthly");
+        String category = jsonObject.getString("category");
+        Expense expense = new Expense(name, amount, dueMonthly, category);
+        return expense;
+    }
+
+    private void addMonthlyFinances(MyPiggyBank account, JSONObject jsonObject) {
+        JSONArray jsonArray = jsonObject.getJSONArray("myMonthlyFinances");
+        JSONObject data = jsonObject.getJSONObject("myMonthlyFinancesData");
+        MonthlyFinances myMonthlyFinances = account.getMyMonthlyFinances();
+        myMonthlyFinances.setMonthlyIncome(data.getDouble("monthlyIncome"));
+        myMonthlyFinances.setPercentToSave(data.getDouble("percentToSave"));
+        myMonthlyFinances.setPercentToSaveRoughMonth(data.getDouble("percentToSaveRoughMonth"));
+        for (Object json : jsonArray) {
+            JSONObject nextExpense = (JSONObject) json;
+            myMonthlyFinances.addExpense(getExpenseFromJson(nextExpense));
+        }
+    }
+
+    private void addThisMonthsFinances(MyPiggyBank account, JSONObject jsonObject) {
+        JSONArray jsonArray = jsonObject.getJSONArray("thisMonthsExpenses");
+        JSONArray overdue = jsonObject.getJSONArray("overdueExpenses");
+        JSONObject data = jsonObject.getJSONObject("thisMonthsFinancesData");
+        ThisMonthsFinances thisMonthsFinances = account.getThisMonthsFinances();
+        thisMonthsFinances.setThisMonthsSaving(data.getDouble("saving"));
+        thisMonthsFinances.setThisMonthsSpending(data.getDouble("spending"));
+        for (Object json : overdue) {
+            JSONObject nextExpense = (JSONObject) json;
+            thisMonthsFinances.addOverdueExpense(getExpenseFromJson(nextExpense));
+        }
+        for (Object json : jsonArray) {
+            JSONObject nextExpense = (JSONObject) json;
+            thisMonthsFinances.addToThisMonthsExpenses(getExpenseFromJson(nextExpense));
+        }
+    }
 }
