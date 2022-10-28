@@ -1,0 +1,49 @@
+{
+    "thisMonthsFinancesData": {
+        "saving": 1200,
+        "spending": 4100
+    },
+    "thisMonthsExpenses": [{
+        "expenseAmount": 1000,
+        "dueMonthly": true,
+        "title": "Rent",
+        "category": "Needs"
+    }],
+    "mySpendingMonth": 2,
+    "currentBalance": 50300,
+    "name": "Ella",
+    "myMonthlyFinancesData": {
+        "percentToSave": 0.2,
+        "percentToSaveRoughMonth": 0.1,
+        "monthlyIncome": 6000
+    },
+    "overdueExpenses": [],
+    "myMonthlyFinances": [
+        {
+            "expenseAmount": 1000,
+            "dueMonthly": true,
+            "title": "Rent",
+            "category": "Needs"
+        },
+        {
+            "expenseAmount": 600,
+            "dueMonthly": true,
+            "title": "Car",
+            "category": "Needs"
+        }
+    ],
+    "mySpending": [
+        {
+            "expenseAmount": 600,
+            "dueMonthly": true,
+            "title": "Car",
+            "category": "Needs"
+        },
+        {
+            "expenseAmount": 100,
+            "dueMonthly": false,
+            "title": "Hair",
+            "category": "Shopping"
+        }
+    ]
+}

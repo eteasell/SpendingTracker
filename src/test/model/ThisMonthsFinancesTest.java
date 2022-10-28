@@ -105,4 +105,20 @@ public class ThisMonthsFinancesTest {
     public void testGetSingleExpenseNotPresent() {
         assertEquals(null, testFinances.getSingleExpense("Rent"));
     }
+
+    @Test
+    public void testAddOverdueExpenseOnce() {
+        testFinances.addOverdueExpense(testExpenseCar);
+        assertEquals(1, testFinances.getOverdueExpenses().size());
+        assertTrue(testFinances.getOverdueExpenses().contains(testExpenseCar));
+    }
+
+    @Test
+    public void testAddOverdueExpenseTwice() {
+        testFinances.addOverdueExpense(testExpenseCar);
+        testFinances.addOverdueExpense(testExpenseRent);
+        assertEquals(2, testFinances.getOverdueExpenses().size());
+        assertTrue(testFinances.getOverdueExpenses().contains(testExpenseCar));
+        assertTrue(testFinances.getOverdueExpenses().contains(testExpenseRent));
+    }
 }

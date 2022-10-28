@@ -3,8 +3,6 @@ package model;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-import model.Expense;
-
 //Represents the monthly expenses for the current month that are yet to be paid
 public class ThisMonthsFinances extends MonthlyFinances {
 

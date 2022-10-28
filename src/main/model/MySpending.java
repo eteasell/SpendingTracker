@@ -42,7 +42,6 @@ public class MySpending {
         return findLocker;
     }
 
-
     // Getter for month
     public int getMonth() {
         return this.month;

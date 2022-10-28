@@ -73,9 +73,9 @@ public class MyPiggyBankApp {
         String answer = input.next();
         if (answer.equals("load")) {
             loadPiggyBank();
-        } else {
+        } else if (answer.equals("new")) {
             System.out.println("\nPlease enter your name");
-            String ownerName = input.nextLine();
+            String ownerName = input.next();
             System.out.println("\nPlease enter the current amount in your bank account");
             double initialValue = input.nextDouble();
             myPiggyBank = new MyPiggyBank(ownerName, initialValue);

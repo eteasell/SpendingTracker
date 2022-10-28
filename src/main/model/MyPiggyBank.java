@@ -3,11 +3,7 @@ package model;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import persistance.Writable;
-import ui.MyPiggyBankApp;
-import model.MySpending;
-import model.ThisMonthsFinances;
 
-import java.util.ArrayList;
 import java.util.List;
 
 // Represents a bank account having an owner and an currentBalance

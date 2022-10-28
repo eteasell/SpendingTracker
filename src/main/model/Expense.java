@@ -37,11 +37,13 @@ public class Expense implements Writable {
         return this.dueMonthly;
     }
 
+    // EFFECTS: overrides the java method to return the expenses title
     @Override
     public String toString() {
         return this.title;
     }
 
+    // EFFECTS: converts expenses to JSON objects
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
