@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
 
-// MyPiggyBank application for user interaction
+// MyPiggyBank application for text user interaction
 public class MyPiggyBankApp {
 
     // NOTE: Some code in this class is written using the sample TellerApp project or the JsonSerializationDemo
