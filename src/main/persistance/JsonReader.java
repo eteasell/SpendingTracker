@@ -15,7 +15,7 @@ public class JsonReader {
 
     // code in this class taken from JsonSerializationDemo program provided in the course material
 
-    private String source;
+    private final String source;
 
     // EFFECTS: constructs reader to read from source file
     public JsonReader(String source) {
@@ -70,10 +70,10 @@ public class JsonReader {
         double amount = jsonObject.getDouble("expenseAmount");
         boolean dueMonthly = jsonObject.getBoolean("dueMonthly");
         String category = jsonObject.getString("category");
-        Expense expense = new Expense(name, amount, dueMonthly, category);
-        return expense;
+        return new Expense(name, amount, dueMonthly, category);
     }
 
+    // EFFECTS: parses MonthlyFinances from JSON
     private void addMonthlyFinances(MyPiggyBank account, JSONObject jsonObject) {
         JSONArray jsonArray = jsonObject.getJSONArray("myMonthlyFinances");
         JSONObject data = jsonObject.getJSONObject("myMonthlyFinancesData");
@@ -87,6 +87,7 @@ public class JsonReader {
         }
     }
 
+    // EFFECTS: parses ThisMonthsFinances from JSON
     private void addThisMonthsFinances(MyPiggyBank account, JSONObject jsonObject) {
         JSONArray jsonArray = jsonObject.getJSONArray("thisMonthsExpenses");
         JSONArray overdue = jsonObject.getJSONArray("overdueExpenses");

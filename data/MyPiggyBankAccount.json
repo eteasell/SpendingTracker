@@ -1,49 +1,41 @@
 {
     "thisMonthsFinancesData": {
-        "saving": 1200,
-        "spending": 4100
+        "saving": 100,
+        "spending": -610.99
     },
-    "thisMonthsExpenses": [{
-        "expenseAmount": 1000,
-        "dueMonthly": true,
-        "title": "Rent",
-        "category": "Needs"
-    }],
+    "thisMonthsExpenses": [],
     "mySpendingMonth": 2,
-    "currentBalance": 50300,
+    "currentBalance": 1989.0100000000002,
     "name": "Ella",
     "myMonthlyFinancesData": {
         "percentToSave": 0.2,
         "percentToSaveRoughMonth": 0.1,
-        "monthlyIncome": 6000
+        "monthlyIncome": 500
     },
-    "overdueExpenses": [],
-    "myMonthlyFinances": [
+    "overdueExpenses": [{
+        "expenseAmount": 200,
+        "dueMonthly": false,
+        "title": "Car",
+        "category": "Needs"
+    }],
+    "myMonthlyFinances": [{
+        "expenseAmount": 1000,
+        "dueMonthly": true,
+        "title": "rent",
+        "category": "Needs"
+    }],
+    "mySpending": [
         {
             "expenseAmount": 1000,
             "dueMonthly": true,
-            "title": "Rent",
+            "title": "rent",
             "category": "Needs"
         },
         {
-            "expenseAmount": 600,
-            "dueMonthly": true,
-            "title": "Car",
-            "category": "Needs"
-        }
-    ],
-    "mySpending": [
-        {
-            "expenseAmount": 600,
-            "dueMonthly": true,
-            "title": "Car",
-            "category": "Needs"
-        },
-        {
-            "expenseAmount": 100,
+            "expenseAmount": 10.99,
             "dueMonthly": false,
-            "title": "Hair",
-            "category": "Shopping"
+            "title": "perugia",
+            "category": "Food"
         }
     ]
 }

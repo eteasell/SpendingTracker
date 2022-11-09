@@ -238,7 +238,7 @@ public class MyPiggyBankApp {
     }
 
     // EFFECTS: saves the piggy bank to file
-    private void savePiggyBank() { //*
+    public void savePiggyBank() { //*
         try {
             jsonWriter.open();
             jsonWriter.write(myPiggyBank);
@@ -251,7 +251,7 @@ public class MyPiggyBankApp {
 
     // MODIFIES: this
     // EFFECTS: loads the saved PiggyBank accounts
-    private void loadPiggyBank() { //*
+    public void loadPiggyBank() { //*
         try {
             myPiggyBank = jsonReader.read();
             System.out.println("Loaded " + myPiggyBank.getOwner() + "'s from " + JSON_STORE);

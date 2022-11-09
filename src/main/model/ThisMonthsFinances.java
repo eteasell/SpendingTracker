@@ -13,6 +13,8 @@ public class ThisMonthsFinances extends MonthlyFinances {
     private double thisMonthsSaving; // amount to be put into savings this month
     private static double thisMonthsSpending; // amount left to spend this month
 
+    // TODO: you don't have a way to pay overdue expenses and get them off the list!
+
     public ThisMonthsFinances() {
         this.thisMonthsExpenses = new ArrayList<>();
         this.overdueExpenses = new ArrayList<>();
@@ -32,6 +34,7 @@ public class ThisMonthsFinances extends MonthlyFinances {
     }
 
 
+    // TODO: should this be subtracting from thisMonthsSpending?
     // MODIFIES: this
     // EFFECTS: if the expense is in thisMonthsExpenses, removes the given expense from
     // ThisMonthsExpenses but NOT from Monthly Expenses, and updates thisMonthsSpending
@@ -44,7 +47,7 @@ public class ThisMonthsFinances extends MonthlyFinances {
     // EFFECTS: if it is the first day of the month, stores any unpaid expenses in overdueExpenses,
     // and resets ThisMonthsExpenses to match MonthlyExpenses again.
     public void resetMonth() {
-        if ((dayOfMonth) == 1) {
+        if ((dayOfMonth) == 1) {  // should this be switched to manual reset? Does the automatic work??
             if (thisMonthsExpenses.size() > 0) {
                 overdueExpenses.addAll(thisMonthsExpenses);
             }
