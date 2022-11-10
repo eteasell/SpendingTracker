@@ -34,7 +34,6 @@ public class ThisMonthsFinances extends MonthlyFinances {
     }
 
 
-    // TODO: should this be subtracting from thisMonthsSpending?
     // MODIFIES: this
     // EFFECTS: if the expense is in thisMonthsExpenses, removes the given expense from
     // ThisMonthsExpenses but NOT from Monthly Expenses, and updates thisMonthsSpending

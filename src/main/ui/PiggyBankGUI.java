@@ -21,7 +21,6 @@ import java.util.Scanner;
 public class PiggyBankGUI extends JFrame implements ActionListener {
 
     private JLabel label;
-
     private static final String JSON_STORE = "./data/MyPiggyBankAccount.json"; //*
     private MyPiggyBank myPiggyBank;
     private MySpending mySpending;
@@ -32,26 +31,23 @@ public class PiggyBankGUI extends JFrame implements ActionListener {
 
     public PiggyBankGUI() {
         super("The College Student's Piggy Bank");
-        paneSetUp();
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setPreferredSize(new Dimension(900, 700));
+        ((JPanel) getContentPane()).setBorder(new EmptyBorder(13, 13, 13, 13));
+        setLayout(new FlowLayout());
+        setVisible(true);
         JButton b1 = new JButton("Load account");
         JButton b2 = new JButton("Create a new account");
-        b1.setActionCommand("myButton1");
         b1.addActionListener(this);
+        b1.setActionCommand("myButton1");
+        b2.addActionListener(new Button2Listener());
         b2.setActionCommand("myButton2");
-        b2.addActionListener(this);
         label = new JLabel("Welcome!");
         add(label);
         add(b1);
         add(b2);
     }
 
-    public void paneSetUp() {
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setPreferredSize(new Dimension(900, 700));
-        ((JPanel) getContentPane()).setBorder(new EmptyBorder(13, 13, 13, 13));
-        setLayout(new FlowLayout());
-        setVisible(true);
-    }
 
     public static void main(String[] args) {
         new PiggyBankGUI();
@@ -60,11 +56,21 @@ public class PiggyBankGUI extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("myButton1")) {
-            loadPiggyBank();
-            this.dispose();
-            new MainMenu();
-        } else if (e.getActionCommand().equals("myButton2")) {
-            // go to setup screen
+            System.out.println(e.getActionCommand());
+            //loadPiggyBank();
+            //something to do with root??
+            //new MainMenu();
+        }
+    }
+
+    public class Button2Listener implements ActionListener {
+
+        public Button2Listener() {
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            System.out.println(e.getActionCommand());
         }
     }
 
@@ -73,9 +79,11 @@ public class PiggyBankGUI extends JFrame implements ActionListener {
     public void loadPiggyBank() { //*
         try {
             myPiggyBank = jsonReader.read();
-            System.out.println("Loaded " + myPiggyBank.getOwner() + "'s from " + JSON_STORE);
+            JOptionPane.showMessageDialog(null, "Loaded " + myPiggyBank.getOwner() + "'s from "
+                    + JSON_STORE);
         } catch (IOException e) {
-            System.out.println("Unable to read from file: " + JSON_STORE);
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Cannot read from " + JSON_STORE,
+                    JOptionPane.ERROR_MESSAGE);
         }
     }
 

@@ -9,9 +9,12 @@ public class MainMenu extends PiggyBankGUI implements ActionListener {
 
     public MainMenu() {
         super();
-        paneSetUp();
-        menu = new JMenu();
+        addMenu();
         JLabel label = new JLabel("Testing");
         add(label);
+    }
+
+    public void addMenu() {
+        // stub
     }
 }
