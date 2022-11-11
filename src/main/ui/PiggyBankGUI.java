@@ -52,7 +52,9 @@ public class PiggyBankGUI extends JFrame {
 
     public void addWelcomeMessage() {
         welcome = new JInternalFrame("Welcome!", true, false, false, false);
-        welcome.setLayout((new BorderLayout()));
+        JPanel panel = new JPanel();
+        welcome.add(panel);
+        panel.setLayout(new FlowLayout());
         setContentPane(desktop);
 
         JButton b1 = new JButton("Load account");
@@ -61,10 +63,8 @@ public class PiggyBankGUI extends JFrame {
         b1.setActionCommand("myButton1");
         b2.addActionListener(new Button2Listener());
         b2.setActionCommand("myButton2");
-        label = new JLabel("Welcome!");
-        welcome.add(label);
-        welcome.add(b1);
-        welcome.add(b2);
+        panel.add(b1);
+        panel.add(b2);
 
         welcome.pack();
         welcome.setVisible(true);
