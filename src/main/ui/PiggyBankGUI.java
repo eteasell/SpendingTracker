@@ -6,7 +6,6 @@ import model.MySpending;
 import model.ThisMonthsFinances;
 import persistance.JsonReader;
 import persistance.JsonWriter;
-import ui.MyPiggyBankApp;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -14,52 +13,91 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.util.Scanner;
 
 // Main class for running project with GUI
-// Code based off of example from EdX/StackOverflow, LabelChanger, and AlarmSystem Project
-public class PiggyBankGUI extends JFrame implements ActionListener {
+// Code based off of examples from EdX/StackOverflow, LabelChanger, and AlarmSystem Project
+public class PiggyBankGUI extends JFrame {
 
     private JLabel label;
+    private static final int WIDTH = 800;
+    private static final int HEIGHT = 600;
+    private JDesktopPane desktop;
+    private JInternalFrame controlPanel;
+    private JInternalFrame welcome;
+
     private static final String JSON_STORE = "./data/MyPiggyBankAccount.json"; //*
-    private MyPiggyBank myPiggyBank;
+    protected MyPiggyBank myPiggyBank;
     private MySpending mySpending;
     private MonthlyFinances myMonthlyFinances;
     private ThisMonthsFinances thisMonthsFinances;
-    private JsonWriter jsonWriter;
-    private JsonReader jsonReader;
+    private JsonReader jsonReader = new JsonReader(JSON_STORE);
+    private JsonWriter jsonWriter = new JsonWriter(JSON_STORE);
 
-    public PiggyBankGUI() {
+    public PiggyBankGUI() { // frame setup fromJava Tutorials example
         super("The College Student's Piggy Bank");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setPreferredSize(new Dimension(900, 700));
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setPreferredSize(new Dimension(WIDTH, HEIGHT));
         ((JPanel) getContentPane()).setBorder(new EmptyBorder(13, 13, 13, 13));
         setLayout(new FlowLayout());
+
+        desktop = new JDesktopPane();
+        addMainMenu();
+        addWelcomeMessage();
+
+        setContentPane(desktop);
+        pack();
         setVisible(true);
+        desktop.setVisible(true);
+    }
+
+    public void addWelcomeMessage() {
+        welcome = new JInternalFrame("Welcome!", true, false, false, false);
+        welcome.setLayout((new BorderLayout()));
+        setContentPane(desktop);
+
         JButton b1 = new JButton("Load account");
         JButton b2 = new JButton("Create a new account");
-        b1.addActionListener(this);
+        b1.addActionListener(new Button1Listener());
         b1.setActionCommand("myButton1");
         b2.addActionListener(new Button2Listener());
         b2.setActionCommand("myButton2");
         label = new JLabel("Welcome!");
-        add(label);
-        add(b1);
-        add(b2);
+        welcome.add(label);
+        welcome.add(b1);
+        welcome.add(b2);
+
+        welcome.pack();
+        welcome.setVisible(true);
+        desktop.add(welcome);
     }
+
+    public void addMainMenu() {
+        controlPanel = new JInternalFrame("Main Menu", true, false, false, false);
+        controlPanel.setLayout(new BorderLayout());
+        setSize(WIDTH, HEIGHT);
+        controlPanel.pack();
+        controlPanel.setVisible(true);
+        desktop.add(controlPanel);
+    }
+
 
 
     public static void main(String[] args) {
         new PiggyBankGUI();
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getActionCommand().equals("myButton1")) {
-            System.out.println(e.getActionCommand());
-            //loadPiggyBank();
-            //something to do with root??
-            //new MainMenu();
+    public class Button1Listener implements ActionListener {
+
+        public Button1Listener() {
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (e.getActionCommand().equals("myButton1")) {
+                rootPane.getContentPane().removeAll();
+                // loadPiggyBank();
+                new MainMenuWindow();
+            }
         }
     }
 
