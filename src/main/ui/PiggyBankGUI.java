@@ -83,29 +83,33 @@ public class PiggyBankGUI extends JFrame {
         desktop.add(controlPanel);
     }
 
-    // Todo: fix the layout and functionality of these input fields... box layout wont show
+    // Todo: fix the layout and functionality of these input fields
     public void addNewAccount() {
         newAccountPanel = new JInternalFrame("Please enter your information", true, false,
                 false, false);
-        newAccountPanel.setLayout(new BoxLayout(newAccountPanel, BoxLayout.Y_AXIS));
+        JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        newAccountPanel.add(panel);
         setSize(WIDTH, HEIGHT);
-        JLabel nameLabel = new JLabel("Account Owner:");
-        newAccountPanel.add(nameLabel, LEFT_ALIGNMENT);
+        setContentPane(desktop);
+
+        panel.add(new JLabel("Account Owner:"));
         name = new JTextField();
-        newAccountPanel.add(name, RIGHT_ALIGNMENT);
+        panel.add(name, LEFT_ALIGNMENT);
+        panel.add(new JLabel("Current Account Balance:"));
         amount = new JTextField();
-        newAccountPanel.add(amount, RIGHT_ALIGNMENT);
+        panel.add(amount, RIGHT_ALIGNMENT);
+        panel.add(new JLabel("Monthly Income:"));
         income = new JTextField();
-        newAccountPanel.add(income, RIGHT_ALIGNMENT);
+        panel.add(income);
         JButton b3 = new JButton("Ok");
         b3.addActionListener(new Button3Listener());
         b3.setActionCommand("myButton3");
-        newAccountPanel.add(b3, CENTER_ALIGNMENT);
+        panel.add(b3);
         newAccountPanel.pack();
         newAccountPanel.setVisible(true);
         desktop.add(newAccountPanel);
     }
-
 
 
     public class Button1Listener implements ActionListener {
@@ -118,6 +122,9 @@ public class PiggyBankGUI extends JFrame {
             if (e.getActionCommand().equals("myButton1")) {
                 desktop.remove(welcome);
                 loadPiggyBank();
+                mySpending = myPiggyBank.getMySpending();
+                myMonthlyFinances = myPiggyBank.getMyMonthlyFinances();
+                thisMonthsFinances = myPiggyBank.getThisMonthsFinances();
                 addMainMenu();
             }
         }
@@ -145,15 +152,25 @@ public class PiggyBankGUI extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
             if (e.getActionCommand().equals("myButton3")) {
-                String owner = name.getText();
-                String accountNum = amount.getText();
-                Double accNum = Double.parseDouble(accountNum);
-                String accountIncome = income.getText();
-                Double accIncome = Double.parseDouble(accountIncome);
-                myPiggyBank = new MyPiggyBank(owner, accNum);
-                JOptionPane.showMessageDialog(null, "Created new account for " + owner);
-                desktop.remove(newAccountPanel);
-                addMainMenu();
+                if (name == null || amount == null || income == null) {
+                    JOptionPane.showMessageDialog(null, "Please input your information!");
+                    desktop.remove(newAccountPanel);
+                    addNewAccount();
+                } else {
+                    String owner = name.getText();
+                    String accountNum = amount.getText();
+                    Double accNum = Double.parseDouble(accountNum);
+                    String accountIncome = income.getText();
+                    Double accIncome = Double.parseDouble(accountIncome);
+                    myPiggyBank = new MyPiggyBank(owner, accNum);
+                    mySpending = myPiggyBank.getMySpending();
+                    myMonthlyFinances = myPiggyBank.getMyMonthlyFinances();
+                    thisMonthsFinances = myPiggyBank.getThisMonthsFinances();
+                    myMonthlyFinances.setMonthlyIncome(accIncome);
+                    JOptionPane.showMessageDialog(null, "Created new account for " + owner);
+                    desktop.remove(newAccountPanel);
+                    addMainMenu();
+                }
             }
         }
     }
