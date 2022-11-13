@@ -18,13 +18,15 @@ import java.io.IOException;
 // Code based off of examples from EdX/StackOverflow, LabelChanger, and AlarmSystem Project
 public class PiggyBankGUI extends JFrame {
 
-    private JLabel label;
     private static final int WIDTH = 800;
     private static final int HEIGHT = 600;
     private final JDesktopPane desktop;
-    private JInternalFrame controlPanel;
+    private JTabbedPane mainMenu = new JTabbedPane(JTabbedPane.BOTTOM);
+    private JPanel mainTab = new JPanel();
+    private JPanel seeMonthlyTab = new JPanel();
     private JInternalFrame welcome;
     private JInternalFrame newAccountPanel;
+    private JInternalFrame mainFrame;
     private JTextField name;
     private JTextField amount;
     private JTextField income;
@@ -34,8 +36,8 @@ public class PiggyBankGUI extends JFrame {
     private MySpending mySpending;
     private MonthlyFinances myMonthlyFinances;
     private ThisMonthsFinances thisMonthsFinances;
-    private JsonReader jsonReader = new JsonReader(JSON_STORE);
-    private JsonWriter jsonWriter = new JsonWriter(JSON_STORE);
+    private final JsonReader jsonReader = new JsonReader(JSON_STORE);
+    private final JsonWriter jsonWriter = new JsonWriter(JSON_STORE);
 
     public PiggyBankGUI() { // frame setup fromJava Tutorials example
         super("The College Student's Piggy Bank");
@@ -75,15 +77,34 @@ public class PiggyBankGUI extends JFrame {
     }
 
     public void addMainMenu() {
-        controlPanel = new JInternalFrame("Main Menu", true, false, false, false);
-        controlPanel.setLayout(new BorderLayout());
-        setSize(WIDTH, HEIGHT);
-        controlPanel.pack();
-        controlPanel.setVisible(true);
-        desktop.add(controlPanel);
+        mainFrame = new JInternalFrame("Main Menu", true, false, false, false);
+        mainFrame.add(mainMenu);
+        mainTab.setVisible(true);
+        seeMonthlyTab.setVisible(true);
+        designMainTab();
+        mainMenu.addTab("Main", mainTab);
+        mainMenu.addTab("See Monthly", seeMonthlyTab);
+        mainFrame.setSize(WIDTH, HEIGHT);
+        mainMenu.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
+        mainMenu.setVisible(true);
+        mainFrame.setVisible(true);
+        mainFrame.pack();
+        mainFrame.add(mainMenu);
+        desktop.add(mainFrame);
     }
 
-    // Todo: fix the layout and functionality of these input fields
+    // TODO: figure out how to properly round current balance
+    // TODO: figure out how to format BorderLayout properly
+    public void designMainTab() {
+        JPanel panel = new JPanel();
+        panel.setLayout(new BorderLayout());
+        panel.add(new JLabel("Account Owner: " + myPiggyBank.getOwner()));
+        panel.add(new JLabel("Current Balance: $" + (double)Math.round(myPiggyBank.getCurrentBalance())));
+        panel.setVisible(true);
+        mainTab.add(panel);
+        pack();
+    }
+
     public void addNewAccount() {
         newAccountPanel = new JInternalFrame("Please enter your information", true, false,
                 false, false);
