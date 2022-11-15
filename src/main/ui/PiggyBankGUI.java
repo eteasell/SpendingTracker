@@ -9,6 +9,7 @@ import persistance.JsonWriter;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -38,6 +39,8 @@ public class PiggyBankGUI extends JFrame {
     private ThisMonthsFinances thisMonthsFinances;
     private final JsonReader jsonReader = new JsonReader(JSON_STORE);
     private final JsonWriter jsonWriter = new JsonWriter(JSON_STORE);
+
+    // move frames into different class and pass piggy bank through constructor!!!!
 
     public PiggyBankGUI() { // frame setup fromJava Tutorials example
         super("The College Student's Piggy Bank");
@@ -98,8 +101,16 @@ public class PiggyBankGUI extends JFrame {
     public void designMainTab() {
         JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout());
-        panel.add(new JLabel("Account Owner: " + myPiggyBank.getOwner()));
-        panel.add(new JLabel("Current Balance: $" + (double)Math.round(myPiggyBank.getCurrentBalance())));
+        panel.add(new JLabel("Account Owner: " + myPiggyBank.getOwner()), BorderLayout.PAGE_START);
+        panel.add(new JLabel("Current Balance: $"
+                        + (double)Math.round(myPiggyBank.getCurrentBalance() * 100) / 100), BorderLayout.LINE_START);
+        JPanel panel2 = new JPanel();
+        panel2.setLayout(new BorderLayout());;
+        panel2.setBackground(new Color(149, 167, 236));
+        panel2.setSize(WIDTH, HEIGHT);
+        panel2.add(new JButton("Testing"));
+        panel2.setVisible(true);
+        panel.add(panel2, BorderLayout.CENTER);
         panel.setVisible(true);
         mainTab.add(panel);
         pack();
