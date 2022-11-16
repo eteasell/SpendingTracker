@@ -32,8 +32,8 @@ public class MonthlyFinances {
     }
 
     // EFFECTS: Getter for MonthlyFinances
-    public ArrayList<Expense> getMonthlyFinances() {
-        return this.monthlyFinances;
+    public static ArrayList<Expense> getMonthlyFinances() {
+        return monthlyFinances;
     }
 
     // EFFECTS: Getter for MonthlyIncome

@@ -102,8 +102,7 @@ public class WelcomeMessage extends JFrame {
                 loadPiggyBank();
                 desktop.remove(welcome);
                 mainMenu = new MainMenuWindow(myPiggyBank, desktop);
-                desktop.addTab("Main", mainMenu.deliverMainTab());
-                desktop.addTab("See Monthly", mainMenu.deliverSeeMonthlyTab());
+                mainMenu.initializeMainMenu();
             }
         }
     }
@@ -148,8 +147,7 @@ public class WelcomeMessage extends JFrame {
                     JOptionPane.showMessageDialog(null, "Created new account for " + owner);
                     desktop.remove(newAccountPanel);
                     MainMenuWindow mainMenu = new MainMenuWindow(myPiggyBank, desktop);
-                    desktop.addTab("Main", mainMenu.deliverMainTab());
-                    desktop.addTab("See Monthly", mainMenu.deliverSeeMonthlyTab());
+                    mainMenu.initializeMainMenu();
                 }
             }
         }

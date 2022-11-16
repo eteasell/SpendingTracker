@@ -24,19 +24,6 @@ public class PiggyBankGUI extends JFrame {
     private JFrame frame;
     protected JTabbedPane desktop;
 
-    private WelcomeMessage welcome;
-    private JInternalFrame newAccountPanel;
-    private MainMenuWindow mainMenu;
-    private JTextField name;
-    private JTextField amount;
-    private JTextField income;
-
-    private MyPiggyBank myPiggyBank;
-    private MySpending mySpending;
-    private MonthlyFinances myMonthlyFinances;
-    private ThisMonthsFinances thisMonthsFinances;
-
-    // move frames into different class and pass piggy bank through constructor!!!!
 
     public PiggyBankGUI() { // frame setup fromJava Tutorials example
         this.frame = new JFrame();
@@ -53,9 +40,8 @@ public class PiggyBankGUI extends JFrame {
         this.frame.setContentPane(desktop);
         pack();
 
-        WelcomeMessage welcome = new WelcomeMessage(myPiggyBank, desktop);
+        WelcomeMessage welcome = new WelcomeMessage(null, desktop);
         welcome.getWelcome().setVisible(true);
-        //getContentPane().add(welcome.getWelcome());
     }
 
     public static void main(String[] args) {
