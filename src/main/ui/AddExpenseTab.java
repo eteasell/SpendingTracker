@@ -3,6 +3,7 @@ package ui;
 import model.Expense;
 import model.MonthlyFinances;
 import model.MyPiggyBank;
+import model.ThisMonthsFinances;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,8 +16,11 @@ public class AddExpenseTab {
     private static final int HEIGHT = 600;
     private JSeparator sep = new JSeparator();
 
-    protected static MyPiggyBank myPiggyBank;
+    protected MyPiggyBank myPiggyBank;
+    protected ThisMonthsFinances thisMonthsFinances;
+    protected MonthlyFinances myMonthlyFinances;
     private JTabbedPane desktop;
+    private MainMenuWindow main;
 
     private JPanel addExpenseTab;
     private JPanel panel = new JPanel();
@@ -30,9 +34,11 @@ public class AddExpenseTab {
     private static JRadioButton shopping;
     private JButton add;
 
-    public AddExpenseTab(MyPiggyBank myPiggyBank, JTabbedPane desktop) {
+    public AddExpenseTab(MyPiggyBank myPiggyBank, JTabbedPane desktop, MainMenuWindow main) {
         this.myPiggyBank = myPiggyBank;
+        this.myMonthlyFinances = myPiggyBank.getMyMonthlyFinances();
         this.desktop = desktop;
+        this.main = main;
         this.addExpenseTab = new JPanel();
         this.addExpenseTab.setVisible(true);
     }
@@ -91,7 +97,7 @@ public class AddExpenseTab {
         return this.addExpenseTab;
     }
 
-    public static class AddButtonListener implements ActionListener {
+    public class AddButtonListener implements ActionListener {
 
         private String expTitle;
         private String expAmnt;
@@ -105,6 +111,7 @@ public class AddExpenseTab {
             double expAmount;
         }
 
+        @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
         @Override
         public void actionPerformed(ActionEvent e) {
             if (e.getActionCommand().equals("add")) {
@@ -127,8 +134,11 @@ public class AddExpenseTab {
                 if (yes.isSelected()) {
                     paidMonthly = true;
                     Expense expense = new Expense(expTitle, expAmount, true, category);
-                    MonthlyFinances.addExpense(expense);
-                    System.out.println(MonthlyFinances.getMonthlyFinances());
+                    thisMonthsFinances.addExpense(expense);
+                } else if (no.isSelected()) {
+                    Expense expense = new Expense(expTitle, expAmount, false, category);
+                    myPiggyBank.pay(expense);
+                    main.designMainTab();
                 }
             }
         }

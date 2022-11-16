@@ -57,6 +57,7 @@ public class ThisMonthsFinancesTest {
         testFinances.setThisMonthsSpending(400);
         testFinances.payExpense(testExpenseCar);
         assertFalse(testFinances.getThisMonthsExpenses().contains(testExpenseCar));
+        assertTrue(testFinances.getPaidThisMonth().contains(testExpenseCar));
         assertEquals(100, testFinances.getThisMonthsSpending());
     }
 
@@ -66,6 +67,7 @@ public class ThisMonthsFinancesTest {
         testFinances.setThisMonthsSpending(400);
         testFinances.payExpense(testExpenseClothes);
         assertFalse(testFinances.getThisMonthsExpenses().contains(testExpenseClothes));
+        assertFalse(testFinances.getPaidThisMonth().contains(testExpenseClothes));
         assertEquals(350, testFinances.getThisMonthsSpending());
     }
 

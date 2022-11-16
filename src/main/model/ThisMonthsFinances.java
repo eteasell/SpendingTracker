@@ -10,6 +10,8 @@ public class ThisMonthsFinances extends MonthlyFinances {
     private Calendar rightNow = Calendar.getInstance();
     private int dayOfMonth = rightNow.DAY_OF_MONTH;
     private ArrayList<Expense> thisMonthsExpenses; // expenses remaining this month to be paid
+    private ArrayList<Expense> paidThisMonth;
+    private ArrayList<Expense> nonMonthlyPaid;
     private double thisMonthsSaving; // amount to be put into savings this month
     private static double thisMonthsSpending; // amount left to spend this month
 
@@ -18,6 +20,8 @@ public class ThisMonthsFinances extends MonthlyFinances {
     public ThisMonthsFinances() {
         this.thisMonthsExpenses = new ArrayList<>();
         this.overdueExpenses = new ArrayList<>();
+        this.paidThisMonth = new ArrayList<>();
+        this.nonMonthlyPaid = new ArrayList<>();
     }
 
     // REQUIRES: requires income >= 0
@@ -33,14 +37,30 @@ public class ThisMonthsFinances extends MonthlyFinances {
         thisMonthsSpending = income - this.thisMonthsSaving;
     }
 
+    // EFFECTS: calls the correct pay method depending on expense status
+    public void payExpense(Expense e) {
+        thisMonthsSpending = thisMonthsSpending - e.getExpenseAmount();
+        if (e.getStatus()) {
+            payMonthly(e);
+        } else {
+            payNonMonthly(e);
+        }
+    }
 
     // MODIFIES: this
     // EFFECTS: if the expense is in thisMonthsExpenses, removes the given expense from
     // ThisMonthsExpenses but NOT from Monthly Expenses, and updates thisMonthsSpending
-    public void payExpense(Expense e) {
+    public void payMonthly(Expense e) {
         this.thisMonthsExpenses.remove(e);
-        thisMonthsSpending = thisMonthsSpending - e.getExpenseAmount();
+        this.paidThisMonth.add(e);
     }
+
+    // MODIFIES: this
+    // EFFECTS: adds not monthly payment to a one time paid list
+    public void payNonMonthly(Expense e) {
+        this.nonMonthlyPaid.add(e);
+    }
+
 
     // MODIFIES: This
     // EFFECTS: if it is the first day of the month, stores any unpaid expenses in overdueExpenses,
@@ -68,6 +88,11 @@ public class ThisMonthsFinances extends MonthlyFinances {
     //EFFECTS: adds an expense to overdue expenses
     public void addOverdueExpense(Expense e) {
         overdueExpenses.add(e);
+    }
+
+    //Getter for paidThisMonth
+    public ArrayList<Expense> getPaidThisMonth() {
+        return paidThisMonth;
     }
 
     //Getter for overdueExpenses

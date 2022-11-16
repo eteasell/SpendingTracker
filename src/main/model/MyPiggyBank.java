@@ -31,7 +31,11 @@ public class MyPiggyBank implements Writable {
     public void pay(Expense e) {
         this.currentBalance = this.currentBalance - e.getExpenseAmount();
         mySpending.addExpenseToMySpending(e);
-        thisMonthsFinances.payExpense(e);
+        if (e.getStatus()) {
+            thisMonthsFinances.payMonthly(e);
+        } else {
+            thisMonthsFinances.payNonMonthly(e);
+        }
     }
 
     //REQUIRES: amount > 0

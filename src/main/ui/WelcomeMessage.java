@@ -19,8 +19,6 @@ public class WelcomeMessage extends JFrame {
     private static final int HEIGHT = 600;
 
     private MyPiggyBank myPiggyBank;
-    private MySpending mySpending;
-    private MonthlyFinances myMonthlyFinances;
     private ThisMonthsFinances thisMonthsFinances;
     private JTextField name;
     private JTextField amount;
@@ -140,10 +138,7 @@ public class WelcomeMessage extends JFrame {
                     String accountIncome = income.getText();
                     double accIncome = Double.parseDouble(accountIncome);
                     myPiggyBank = new MyPiggyBank(owner, accNum);
-                    mySpending = myPiggyBank.getMySpending();
-                    myMonthlyFinances = myPiggyBank.getMyMonthlyFinances();
                     thisMonthsFinances = myPiggyBank.getThisMonthsFinances();
-                    myMonthlyFinances.setMonthlyIncome(accIncome);
                     JOptionPane.showMessageDialog(null, "Created new account for " + owner);
                     desktop.remove(newAccountPanel);
                     MainMenuWindow mainMenu = new MainMenuWindow(myPiggyBank, desktop);
