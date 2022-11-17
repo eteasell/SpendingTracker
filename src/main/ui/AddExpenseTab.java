@@ -18,9 +18,9 @@ public class AddExpenseTab {
 
     protected MyPiggyBank myPiggyBank;
     protected ThisMonthsFinances thisMonthsFinances;
-    protected MonthlyFinances myMonthlyFinances;
     private JTabbedPane desktop;
     private MainMenuWindow main;
+    private SeeMonthlyTab monthly;
 
     private JPanel addExpenseTab;
     private JPanel panel = new JPanel();
@@ -34,11 +34,12 @@ public class AddExpenseTab {
     private static JRadioButton shopping;
     private JButton add;
 
-    public AddExpenseTab(MyPiggyBank myPiggyBank, JTabbedPane desktop, MainMenuWindow main) {
+    public AddExpenseTab(MyPiggyBank myPiggyBank, JTabbedPane desktop, MainMenuWindow main, SeeMonthlyTab monthly) {
         this.myPiggyBank = myPiggyBank;
-        this.myMonthlyFinances = myPiggyBank.getMyMonthlyFinances();
+        this.thisMonthsFinances = myPiggyBank.getThisMonthsFinances();
         this.desktop = desktop;
         this.main = main;
+        this.monthly = monthly;
         this.addExpenseTab = new JPanel();
         this.addExpenseTab.setVisible(true);
     }
@@ -134,7 +135,8 @@ public class AddExpenseTab {
                 if (yes.isSelected()) {
                     paidMonthly = true;
                     Expense expense = new Expense(expTitle, expAmount, true, category);
-                    thisMonthsFinances.addExpense(expense);
+                    thisMonthsFinances.getThisMonthsExpenses().add(expense);
+                    monthly.designSeeMonthlyTab();
                 } else if (no.isSelected()) {
                     Expense expense = new Expense(expTitle, expAmount, false, category);
                     myPiggyBank.pay(expense);

@@ -18,8 +18,8 @@ public class MainMenuWindow {
         this.myPiggyBank = myPiggyBank;
         this.desktop = desktop;
         mainTab = new JPanel();
-        addExpenseTab = new AddExpenseTab(myPiggyBank, desktop, this);
         seeMonthlyTab = new SeeMonthlyTab(myPiggyBank, desktop);
+        addExpenseTab = new AddExpenseTab(myPiggyBank, desktop, this, seeMonthlyTab);
     }
 
     public void initializeMainMenu() {
