@@ -142,6 +142,16 @@ public class MyPiggyBank implements Writable {
         return jsonArray;
     }
 
+    // EFFECTS: returns paidThisMonth from ThisMonthsFinances as a JSONArray
+    private JSONArray paidThisMonthToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Expense e : thisMonthsFinances.getPaidThisMonth()) {
+            jsonArray.put(e.toJson());
+        }
+        return jsonArray;
+    }
+
     // EFFECTS: returns just overdueExpenses from thisMonthsFinances in the PiggyBank as a JSONArray
     private JSONArray overdueExpensesToJson() {
         JSONArray jsonArray = new JSONArray();

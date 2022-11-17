@@ -11,6 +11,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class WelcomeMessage extends JFrame {
@@ -32,11 +33,9 @@ public class WelcomeMessage extends JFrame {
 
     private static final String JSON_STORE = "./data/MyPiggyBankAccount.json"; //*
     private final JsonReader jsonReader = new JsonReader(JSON_STORE);
-    private final JsonWriter jsonWriter = new JsonWriter(JSON_STORE);
 
-    public WelcomeMessage(MyPiggyBank myPiggyBank, JTabbedPane desktop) {
+    public WelcomeMessage(JTabbedPane desktop) {
         this.desktop = desktop;
-        this.myPiggyBank = myPiggyBank;
         welcome = new JDialog();
         welcome.setLocationRelativeTo(desktop);
         panel = new JPanel();
@@ -119,11 +118,13 @@ public class WelcomeMessage extends JFrame {
         }
     }
 
+    // Class which contains the button to initialize a new PiggyBank account from user input
     public class Button3Listener implements ActionListener {
 
         public Button3Listener() {
         }
 
+        // MODIFIES: this, MainMenuWindow, PiggyBankGUI
         @Override
         public void actionPerformed(ActionEvent e) {
             if (e.getActionCommand().equals("myButton3")) {
@@ -160,5 +161,11 @@ public class WelcomeMessage extends JFrame {
                     JOptionPane.ERROR_MESSAGE);
         }
     }
+
+    // EFFECTS: send this myPiggyBank to PiggyBankGUI to it can be accessed to save later
+    public MyPiggyBank sendPiggyBankToGUI() {
+        return this.myPiggyBank;
+    }
+
 
 }
