@@ -142,15 +142,14 @@ public class AddExpenseTab {
                     Expense expense = new Expense(expTitle, expAmount, false, category);
                     myPiggyBank.pay(expense);
                     main.designMainTab();
-                    main.getPaidTab().designPaidTab();
+                    try {
+                        main.getPaidTab().designPaidTab();
+                    } catch (Exception exception) {
+                        System.out.println("list changed again");
+                    }
                 }
             }
         }
-
-        public void ensureNonNull() { // if any of these booleans are false it should fail
-           // boolean textFields = (title.getText() == null || amount.getText() == null);
-            //boolean paidMonthly = !(yes.isSelected() && no.isSelected()) || (!yes.isSelected() && !no.isSelected());
-            //boolean category = (needs.isSelected() && ...);
-        }
+        // TODO: FIX HERE
     }
 }

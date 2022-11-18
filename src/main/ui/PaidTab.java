@@ -5,7 +5,6 @@ import model.MyPiggyBank;
 import model.ThisMonthsFinances;
 
 import javax.swing.*;
-import java.awt.*;
 import java.util.ArrayList;
 
 public class PaidTab {
@@ -15,48 +14,53 @@ public class PaidTab {
     protected MainMenuWindow main;
 
     private ThisMonthsFinances thisMonthsFinances;
-    private JList<Expense> list1;
-    private DefaultListModel model1;
-    private JList<Expense> list2;
-    private DefaultListModel model2;
-    private JPanel panel1 = new JPanel();
-    private JPanel panel2 = new JPanel();
+    private JList<Expense> list = new JList<>();
+    private DefaultListModel model = new DefaultListModel();
+    private JLabel label = new JLabel();
+    private JPanel panel = new JPanel();
     private JSplitPane paidTab = new JSplitPane();
+    private JScrollPane scroller = new JScrollPane(list);
 
     public PaidTab(MyPiggyBank myPiggyBank, JTabbedPane desktop, MainMenuWindow main) {
         this.myPiggyBank = myPiggyBank;
         this.desktop = desktop;
         this.main = main;
         this.thisMonthsFinances = myPiggyBank.getThisMonthsFinances();
+        this.paidTab.setVisible(true);
     }
 
     public void designPaidTab() {
-        paidTab.removeAll();
-        list1 = new JList<>();
-        model1 = new DefaultListModel();
-        list1.setModel(model1);
-        list2 = new JList<>();
-        model2 = new DefaultListModel();
-        list2.setModel(model2);
-
-        panel1.setLayout(new FlowLayout());
-        panel2.setLayout(new FlowLayout());
-        paidTab.setLeftComponent(panel1);
-        paidTab.setRightComponent(panel2);
-
-        panel1.add(new JLabel("Non Monthly Expenses"));
-        panel1.add(new JScrollPane(list1));
-        panel2.add(new JLabel("Monthly Expenses"));
-        panel2.add(new JScrollPane(list2));
-
+        paidTab.remove(paidTab.getLeftComponent());
+        list.setModel(model);
+        paidTab.setLeftComponent(scroller);
+        panel.add(label);
+        paidTab.setRightComponent(panel);
+        model.removeAllElements();
         ArrayList<Expense> expenseList1 = this.thisMonthsFinances.getNonMonthlyPaid();
         for (Expense e : expenseList1) {
-            model1.addElement(e);
+            model.addElement(e);
         }
         ArrayList<Expense> expenseList2 = this.thisMonthsFinances.getPaidThisMonth();
         for (Expense e : expenseList2) {
-            model2.addElement(e);
+            model.addElement(e);
         }
+        getItem();
+        paidTab.setVisible(true);
+        paidTab.getLeftComponent().repaint();
+        paidTab.getLeftComponent().revalidate();
+    }
+
+    public void getItem() {
+        list.getSelectionModel().addListSelectionListener(e -> {
+            Expense expense = list.getSelectedValue();
+            if (expense.getStatus()) {
+                label.setText("Title: " + expense.getTitle() + ", Amount: $" + expense.getExpenseAmount()
+                        + ", Category: " + expense.getCategory() + ", Monthly Payment");
+            } else {
+                label.setText("Title: " + expense.getTitle() + ", Amount: $" + expense.getExpenseAmount()
+                        + ", Category: " + expense.getCategory() + ", One-Time Payment");
+            }
+        });
     }
 
     public JSplitPane getPaidTab() {

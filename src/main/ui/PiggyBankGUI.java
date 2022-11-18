@@ -29,6 +29,9 @@ public class PiggyBankGUI extends JFrame {
     private static final String JSON_STORE = "./data/MyPiggyBankAccount.json"; //*
     private final JsonWriter jsonWriter = new JsonWriter(JSON_STORE);
 
+    // TODO: fix all suppress checkstyle methods
+    // TODO: add all necessary documentation
+    // TODO: add necessary info to README
 
     public PiggyBankGUI() { // frame setup from Java Tutorials example
         this.frame = new JFrame();

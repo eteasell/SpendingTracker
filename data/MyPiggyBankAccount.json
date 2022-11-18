@@ -5,19 +5,57 @@
     },
     "thisMonthsExpenses": [],
     "mySpendingMonth": 2,
-    "currentBalance": 27693.9,
+    "currentBalance": 26514.49,
     "name": "Ella",
     "myMonthlyFinancesData": {
         "percentToSave": 0.2,
         "percentToSaveRoughMonth": 0.1,
         "monthlyIncome": 0
     },
-    "nonMonthlyPaid": [{
-        "expenseAmount": 307,
-        "dueMonthly": false,
-        "title": "Hair",
-        "category": "Shopping"
-    }],
+    "nonMonthlyPaid": [
+        {
+            "expenseAmount": 307,
+            "dueMonthly": false,
+            "title": "Hair",
+            "category": "Shopping"
+        },
+        {
+            "expenseAmount": 50,
+            "dueMonthly": false,
+            "title": "Shirt",
+            "category": "Shopping"
+        },
+        {
+            "expenseAmount": 100,
+            "dueMonthly": false,
+            "title": "Bar",
+            "category": "Fun"
+        },
+        {
+            "expenseAmount": 20,
+            "dueMonthly": false,
+            "title": "sushi",
+            "category": "Food"
+        },
+        {
+            "expenseAmount": 5.05,
+            "dueMonthly": false,
+            "title": "coffee",
+            "category": "Needs"
+        },
+        {
+            "expenseAmount": 4.36,
+            "dueMonthly": false,
+            "title": "milk",
+            "category": "Food"
+        },
+        {
+            "expenseAmount": 1000,
+            "dueMonthly": false,
+            "title": "COUCH",
+            "category": "Shopping"
+        }
+    ],
     "overdueExpenses": [],
     "myMonthlyFinances": [],
     "paidThisMonth": [
@@ -48,9 +86,45 @@
             "category": "Needs"
         },
         {
+            "expenseAmount": 5.05,
+            "dueMonthly": false,
+            "title": "coffee",
+            "category": "Needs"
+        },
+        {
+            "expenseAmount": 100,
+            "dueMonthly": false,
+            "title": "Bar",
+            "category": "Fun"
+        },
+        {
+            "expenseAmount": 20,
+            "dueMonthly": false,
+            "title": "sushi",
+            "category": "Food"
+        },
+        {
+            "expenseAmount": 4.36,
+            "dueMonthly": false,
+            "title": "milk",
+            "category": "Food"
+        },
+        {
             "expenseAmount": 307,
             "dueMonthly": false,
             "title": "Hair",
+            "category": "Shopping"
+        },
+        {
+            "expenseAmount": 50,
+            "dueMonthly": false,
+            "title": "Shirt",
+            "category": "Shopping"
+        },
+        {
+            "expenseAmount": 1000,
+            "dueMonthly": false,
+            "title": "COUCH",
             "category": "Shopping"
         }
     ]
