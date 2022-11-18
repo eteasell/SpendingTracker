@@ -24,7 +24,7 @@ public class PiggyBankGUI extends JFrame {
     private JFrame frame;
     protected JTabbedPane desktop;
     protected WelcomeMessage welcome;
-   // private MyPiggyBank myPiggyBank;
+    // private MyPiggyBank myPiggyBank;
 
     private static final String JSON_STORE = "./data/MyPiggyBankAccount.json"; //*
     private final JsonWriter jsonWriter = new JsonWriter(JSON_STORE);
@@ -35,7 +35,6 @@ public class PiggyBankGUI extends JFrame {
         this.frame.setTitle("The College Student's Piggy Bank");
         this.frame.setLayout(new BorderLayout());
         this.frame.setMinimumSize(new Dimension(WIDTH, HEIGHT));
-        //this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.frame.setLocationRelativeTo(null);
         this.frame.setVisible(true);
 
@@ -68,8 +67,8 @@ public class PiggyBankGUI extends JFrame {
             JOptionPane.showMessageDialog(null, "Saved " + myPiggyBank.getOwner() + "'s "
                     + "account to " + JSON_STORE);
         } catch (FileNotFoundException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage(), "Unable to write to:  " + JSON_STORE,
-                    JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Unable to write to:  "
+                    + JSON_STORE, JOptionPane.ERROR_MESSAGE);
         }
     }
 

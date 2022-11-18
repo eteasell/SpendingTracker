@@ -18,7 +18,7 @@ public class MainMenuWindow {
         this.myPiggyBank = myPiggyBank;
         this.desktop = desktop;
         mainTab = new JPanel();
-        seeMonthlyTab = new SeeMonthlyTab(myPiggyBank, desktop);
+        seeMonthlyTab = new SeeMonthlyTab(myPiggyBank, desktop, this);
         addExpenseTab = new AddExpenseTab(myPiggyBank, desktop, this, seeMonthlyTab);
     }
 

@@ -4,13 +4,13 @@
         "spending": 0
     },
     "thisMonthsExpenses": [{
-        "expenseAmount": 4000,
+        "expenseAmount": 200,
         "dueMonthly": true,
-        "title": "Rent",
+        "title": "Water",
         "category": "Needs"
     }],
     "mySpendingMonth": 2,
-    "currentBalance": 30000,
+    "currentBalance": 24800,
     "name": "Ella",
     "myMonthlyFinancesData": {
         "percentToSave": 0.2,
@@ -19,5 +19,24 @@
     },
     "overdueExpenses": [],
     "myMonthlyFinances": [],
-    "mySpending": []
+    "mySpending": [
+        {
+            "expenseAmount": 4000,
+            "dueMonthly": true,
+            "title": "Rent",
+            "category": "Needs"
+        },
+        {
+            "expenseAmount": 300,
+            "dueMonthly": true,
+            "title": "Car",
+            "category": "Needs"
+        },
+        {
+            "expenseAmount": 900,
+            "dueMonthly": true,
+            "title": "Rent",
+            "category": "Needs"
+        }
+    ]
 }
