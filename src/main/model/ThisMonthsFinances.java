@@ -95,6 +95,11 @@ public class ThisMonthsFinances extends MonthlyFinances {
         return paidThisMonth;
     }
 
+    //Getter for nonMonthlyPaid
+    public ArrayList<Expense> getNonMonthlyPaid() {
+        return nonMonthlyPaid;
+    }
+
     //Getter for overdueExpenses
     public ArrayList<Expense> getOverdueExpenses() {
         return overdueExpenses;

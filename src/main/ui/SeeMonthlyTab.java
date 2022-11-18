@@ -23,7 +23,6 @@ public class SeeMonthlyTab {
     private JList<Expense> list;
     private DefaultListModel model;
     private JButton button = new JButton("Pay selected expense");
-  //  private JScrollPane scrollPane = new JScrollPane(list);
 
     private JLabel label = new JLabel();
     private JPanel panel = new JPanel();
@@ -94,6 +93,7 @@ public class SeeMonthlyTab {
                     myPiggyBank.pay(expense);
                     main.designMainTab();
                     model.removeElement(expense);
+                    main.getPaidTab().designPaidTab();
                 } catch (Exception ex) {
                     System.out.println("list changed");
                 }

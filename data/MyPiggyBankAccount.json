@@ -3,40 +3,55 @@
         "saving": 0,
         "spending": 0
     },
-    "thisMonthsExpenses": [{
-        "expenseAmount": 200,
-        "dueMonthly": true,
-        "title": "Water",
-        "category": "Needs"
-    }],
+    "thisMonthsExpenses": [],
     "mySpendingMonth": 2,
-    "currentBalance": 24800,
+    "currentBalance": 27693.9,
     "name": "Ella",
     "myMonthlyFinancesData": {
         "percentToSave": 0.2,
         "percentToSaveRoughMonth": 0.1,
         "monthlyIncome": 0
     },
+    "nonMonthlyPaid": [{
+        "expenseAmount": 307,
+        "dueMonthly": false,
+        "title": "Hair",
+        "category": "Shopping"
+    }],
     "overdueExpenses": [],
     "myMonthlyFinances": [],
+    "paidThisMonth": [
+        {
+            "expenseAmount": 1000,
+            "dueMonthly": true,
+            "title": "Rent",
+            "category": "Needs"
+        },
+        {
+            "expenseAmount": 1000,
+            "dueMonthly": true,
+            "title": "Rent",
+            "category": "Needs"
+        }
+    ],
     "mySpending": [
         {
-            "expenseAmount": 4000,
+            "expenseAmount": 1000,
             "dueMonthly": true,
             "title": "Rent",
             "category": "Needs"
         },
         {
-            "expenseAmount": 300,
-            "dueMonthly": true,
-            "title": "Car",
-            "category": "Needs"
-        },
-        {
-            "expenseAmount": 900,
+            "expenseAmount": 1000,
             "dueMonthly": true,
             "title": "Rent",
             "category": "Needs"
+        },
+        {
+            "expenseAmount": 307,
+            "dueMonthly": false,
+            "title": "Hair",
+            "category": "Shopping"
         }
     ]
 }

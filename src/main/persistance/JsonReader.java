@@ -88,10 +88,13 @@ public class JsonReader {
     }
 
     // EFFECTS: parses ThisMonthsFinances from JSON
+    @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
     private void addThisMonthsFinances(MyPiggyBank account, JSONObject jsonObject) {
         JSONArray jsonArray = jsonObject.getJSONArray("thisMonthsExpenses");
         JSONArray overdue = jsonObject.getJSONArray("overdueExpenses");
         JSONObject data = jsonObject.getJSONObject("thisMonthsFinancesData");
+        JSONArray monthly = jsonObject.getJSONArray("paidThisMonth");
+        JSONArray nonMonthly = jsonObject.getJSONArray("nonMonthlyPaid");
         ThisMonthsFinances thisMonthsFinances = account.getThisMonthsFinances();
         thisMonthsFinances.setThisMonthsSaving(data.getDouble("saving"));
         thisMonthsFinances.setThisMonthsSpending(data.getDouble("spending"));
@@ -102,6 +105,14 @@ public class JsonReader {
         for (Object json : jsonArray) {
             JSONObject nextExpense = (JSONObject) json;
             thisMonthsFinances.addToThisMonthsExpenses(getExpenseFromJson(nextExpense));
+        }
+        for (Object json : nonMonthly) {
+            JSONObject nextExpense = (JSONObject) json;
+            thisMonthsFinances.payNonMonthly(getExpenseFromJson(nextExpense));
+        }
+        for (Object json : monthly) {
+            JSONObject nextExpense = (JSONObject) json;
+            thisMonthsFinances.payMonthly(getExpenseFromJson(nextExpense));
         }
     }
 }

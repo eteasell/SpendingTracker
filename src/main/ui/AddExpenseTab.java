@@ -137,10 +137,12 @@ public class AddExpenseTab {
                     Expense expense = new Expense(expTitle, expAmount, true, category);
                     thisMonthsFinances.getThisMonthsExpenses().add(expense);
                     monthly.designSeeMonthlyTab();
+                    main.getPaidTab().designPaidTab();
                 } else if (no.isSelected()) {
                     Expense expense = new Expense(expTitle, expAmount, false, category);
                     myPiggyBank.pay(expense);
                     main.designMainTab();
+                    main.getPaidTab().designPaidTab();
                 }
             }
         }

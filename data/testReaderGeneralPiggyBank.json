@@ -9,6 +9,18 @@
     "title": "heat",
     "category": "Needs"
   }],
+  "paidThisMonth": [{
+    "expenseAmount": 500,
+    "dueMonthly": true,
+    "title": "heat",
+    "category": "Needs"
+  }],
+  "nonMonthlyPaid": [{
+    "expenseAmount": 500,
+    "dueMonthly": false,
+    "title": "heat",
+    "category": "Needs"
+  }],
   "mySpendingMonth": 2,
   "currentBalance": 4950,
   "name": "Test",

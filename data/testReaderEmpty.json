@@ -3,6 +3,18 @@
     "saving": 0,
     "spending": -39
   },
+  "paidThisMonth": [{
+    "expenseAmount": 500,
+    "dueMonthly": true,
+    "title": "heat",
+    "category": "Needs"
+  }],
+  "nonMonthlyPaid": [{
+    "expenseAmount": 500,
+    "dueMonthly": false,
+    "title": "heat",
+    "category": "Needs"
+  }],
   "thisMonthsExpenses": [],
   "mySpendingMonth": 2,
   "currentBalance": 5000,

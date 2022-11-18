@@ -17,6 +17,26 @@
         "percentToSaveRoughMonth": 0.1,
         "monthlyIncome": 100
     },
+    "nonMonthlyPaid": [
+        {
+            "expenseAmount": 50,
+            "dueMonthly": false,
+            "title": "hair",
+            "category": "Shopping"
+        },
+        {
+            "expenseAmount": 100,
+            "dueMonthly": false,
+            "title": "save-on",
+            "category": "Food"
+        },
+        {
+            "expenseAmount": 100,
+            "dueMonthly": false,
+            "title": "club",
+            "category": "Fun"
+        }
+    ],
     "overdueExpenses": [{
         "expenseAmount": 200,
         "dueMonthly": true,
@@ -24,6 +44,12 @@
         "category": "Needs"
     }],
     "myMonthlyFinances": [{
+        "expenseAmount": 500,
+        "dueMonthly": true,
+        "title": "rent",
+        "category": "Needs"
+    }],
+    "paidThisMonth": [{
         "expenseAmount": 500,
         "dueMonthly": true,
         "title": "rent",

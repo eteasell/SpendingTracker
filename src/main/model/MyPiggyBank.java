@@ -81,6 +81,8 @@ public class MyPiggyBank implements Writable {
         json.put("myMonthlyFinances", myMonthlyFinancesToJson());
         json.put("myMonthlyFinancesData", myMonthlyFinancesDataToJson());
         json.put("thisMonthsExpenses", thisMonthsExpensesToJson());
+        json.put("paidThisMonth", paidThisMonthToJson());
+        json.put("nonMonthlyPaid", nonMonthlyPaidToJson());
         json.put("overdueExpenses", overdueExpensesToJson());
         json.put("thisMonthsFinancesData", thisMonthsFinancesDataToJson());
         return json;
@@ -147,6 +149,16 @@ public class MyPiggyBank implements Writable {
         JSONArray jsonArray = new JSONArray();
 
         for (Expense e : thisMonthsFinances.getPaidThisMonth()) {
+            jsonArray.put(e.toJson());
+        }
+        return jsonArray;
+    }
+
+    // EFFECTS: returns paidThisMonth from ThisMonthsFinances as a JSONArray
+    private JSONArray nonMonthlyPaidToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Expense e : thisMonthsFinances.getNonMonthlyPaid()) {
             jsonArray.put(e.toJson());
         }
         return jsonArray;

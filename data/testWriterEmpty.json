@@ -12,7 +12,9 @@
         "percentToSaveRoughMonth": 0.1,
         "monthlyIncome": 100
     },
+    "nonMonthlyPaid": [],
     "overdueExpenses": [],
     "myMonthlyFinances": [],
+    "paidThisMonth": [],
     "mySpending": []
 }
