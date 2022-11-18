@@ -1,7 +1,6 @@
 package ui;
 
 import model.Expense;
-import model.MonthlyFinances;
 import model.MyPiggyBank;
 import model.ThisMonthsFinances;
 
@@ -10,6 +9,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+// Class representing tab for adding new expenses
 public class AddExpenseTab {
 
     private static final int WIDTH = 800;
@@ -34,6 +34,8 @@ public class AddExpenseTab {
     private static JRadioButton shopping;
     private JButton add;
 
+    // MODIFIES: this
+    // EFFECTS: constructs a new AddExpenseTab
     public AddExpenseTab(MyPiggyBank myPiggyBank, JTabbedPane desktop, MainMenuWindow main, SeeMonthlyTab monthly) {
         this.myPiggyBank = myPiggyBank;
         this.thisMonthsFinances = myPiggyBank.getThisMonthsFinances();
@@ -44,23 +46,36 @@ public class AddExpenseTab {
         this.addExpenseTab.setVisible(true);
     }
 
+    // MODIFIES: this
+    // EFFECTS: designs the AddExpenseTab
     public void designAddExpenseTab() {
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         panel.setSize(WIDTH, HEIGHT);
 
         generateInputForm();
 
-        panel.add(Box.createVerticalGlue()); //* Stack
-        panel.add(Box.createRigidArea(new Dimension(20, 20))); //* Stack
-        panel.setBackground(new Color(217, 221, 245));
+        panel.add(Box.createVerticalGlue()); //* From StackOverflow
+        panel.add(Box.createRigidArea(new Dimension(20, 20))); //* From StackOverflow
+        panel.setBackground(new Color(247, 209, 248));
         panel.setSize(WIDTH, HEIGHT);
         panel.setVisible(true);
         addExpenseTab.add(panel, BorderLayout.CENTER);
     }
 
-
-    @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
+    // MODIFIES: this
+    // EFFECTS: produces the panel for AddExpenseTab which allows the user to input expense information
     public void generateInputForm() {
+        panelAdder();
+        labelAdder();
+        add = new JButton("ADD");
+        panel.add(add);
+        add.addActionListener(new AddButtonListener());
+        add.setActionCommand("add");
+    }
+
+    // MODIFIES: this
+    // EFFECTS: adds the text fields and radio buttons onto panel for user input
+    public void panelAdder() {
         panel.add(new JLabel("Enter the information below to add a new expense..."));
         panel.add(sep);
         panel.add(new JLabel("Expense title:"));
@@ -83,21 +98,23 @@ public class AddExpenseTab {
         panel.add(food);
         shopping = new JRadioButton("Shopping");
         panel.add(shopping);
+    }
 
+    // MODIFIES: this
+    // EFFECTS: adds the instructions to the bottom of the AddExpense panel
+    public void labelAdder() {
         panel.add(new JLabel("If this expense is not to be paid monthly, clicking the 'ADD' button will pay"
                 + " the expense right now."));
         panel.add(new JLabel("If this expense is to be paid monthly, you will need to select it from"
                 + " your 'See Monthly' list to pay it."));
-        add = new JButton("ADD");
-        panel.add(add);
-        add.addActionListener(new AddButtonListener());
-        add.setActionCommand("add");
     }
 
+    // Getter for AddExpenseTab
     public JPanel getAddExpenseTab() {
         return this.addExpenseTab;
     }
 
+    // Hidden class for the button listener corresponding to the ADD button on the AddExpenseTab
     public class AddButtonListener implements ActionListener {
 
         private String expTitle;
@@ -106,20 +123,18 @@ public class AddExpenseTab {
         private boolean paidMonthly = false;
         private String category = null;
 
+        // Hidden class constructor
         public AddButtonListener() {
-            String expTitle = title.getText();
-            String expAmnt = amount.getText();
-            double expAmount;
         }
 
-        @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
+        // REQUIRES: Title contains a string. Amount contains a String of double form. One and only one of
+        // needs, fun, food, shopping is selected. One and only one of yes, no is selected.
+        // MODIFIES: this, expense, thisMonthsFinances, seeMonthlyTab, paidTab, main
+        // EFFECTS: Turns user input into a new Expense.
         @Override
         public void actionPerformed(ActionEvent e) {
             if (e.getActionCommand().equals("add")) {
-                expTitle = title.getText();
-                expAmnt = amount.getText();
-                expAmount = Double.parseDouble(expAmnt);
-
+                textBoxResponse();
                 if (needs.isSelected()) {
                     category = "Needs";
                 }
@@ -133,23 +148,44 @@ public class AddExpenseTab {
                     category = "Shopping";
                 }
                 if (yes.isSelected()) {
-                    paidMonthly = true;
-                    Expense expense = new Expense(expTitle, expAmount, true, category);
-                    thisMonthsFinances.getThisMonthsExpenses().add(expense);
-                    monthly.designSeeMonthlyTab();
-                    main.getPaidTab().designPaidTab();
+                    yesOption();
                 } else if (no.isSelected()) {
-                    Expense expense = new Expense(expTitle, expAmount, false, category);
-                    myPiggyBank.pay(expense);
-                    main.designMainTab();
-                    try {
-                        main.getPaidTab().designPaidTab();
-                    } catch (Exception exception) {
-                        System.out.println("list changed again");
-                    }
+                    noOption();
                 }
             }
         }
-        // TODO: FIX HERE
+
+        // REQUIRES: title, amount non-null. Amount string in double form.
+        // MODIFIES: this
+        // EFFECTS: read text user input
+        public void textBoxResponse() {
+            expTitle = title.getText();
+            expAmnt = amount.getText();
+            expAmount = Double.parseDouble(expAmnt);
+        }
+
+        // MODIFIES: expense, thisMonthsFinances, seeMonthlyTab, paidTab
+        // EFFECTS: constructs appropriate monthly expense, sends to thisMonthsExpenses, and updates seeMonthly
+        // and paid tabs.
+        public void yesOption() {
+            paidMonthly = true;
+            Expense expense = new Expense(expTitle, expAmount, true, category);
+            thisMonthsFinances.getThisMonthsExpenses().add(expense);
+            monthly.designSeeMonthlyTab();
+            main.getPaidTab().designPaidTab();
+        }
+
+        // MODIFIES: expense, myPiggyBank, main, paidTab
+        // EFFECTS: constructs appropriate one-time expense, sends to myPiggyBank, and updates main and paid tabs.
+        public void noOption() {
+            Expense expense = new Expense(expTitle, expAmount, false, category);
+            myPiggyBank.pay(expense);
+            main.designMainTab();
+            try {
+                main.getPaidTab().designPaidTab();
+            } catch (Exception exception) {
+                System.out.println("list changed again");
+            }
+        }
     }
 }

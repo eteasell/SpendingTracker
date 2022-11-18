@@ -4,8 +4,8 @@ import model.MyPiggyBank;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 
+// Class representing the main window on desktop
 public class MainMenuWindow {
 
     private final JTabbedPane desktop;
@@ -16,6 +16,8 @@ public class MainMenuWindow {
     private PaidTab paidTab;
     private ImageIcon image;
 
+    // MODIFIES: this
+    // EFFECTS: Constructs new MainMenuWindow
     public MainMenuWindow(MyPiggyBank myPiggyBank, JTabbedPane desktop) {
         this.myPiggyBank = myPiggyBank;
         this.desktop = desktop;
@@ -25,6 +27,8 @@ public class MainMenuWindow {
         paidTab = new PaidTab(myPiggyBank, desktop, this);
     }
 
+    // MODIFIES: this, PiggyBankGUI, AddExpenseTab, SeeMonthlyTab, PaidTab
+    // EFFECTS: sets up the desktop by adding all tabs
     public void initializeMainMenu() {
         mainTab.setVisible(true);
         designMainTab();
@@ -38,7 +42,9 @@ public class MainMenuWindow {
     }
 
 
-    // image code from https://www.youtube.com/watch?v=ntirmRhy6Fw
+    // Citation: code relating to images is from https://www.youtube.com/watch?v=ntirmRhy6Fw
+    // MODIFIES: this
+    // EFFECTS: constructs the mainTab
     public void designMainTab() {
         mainTab.removeAll();
         JPanel panel = new JPanel();
@@ -54,7 +60,6 @@ public class MainMenuWindow {
             image = new ImageIcon(newImg);
             JLabel imgLabel = new JLabel(image);
             imgLabel.setSize(imgLabel.getPreferredSize());
-            //imgLabel.setSize(650, 600);
             imgLabel.setVisible(true);
             panel.add(imgLabel, BorderLayout.SOUTH);
         } catch (Exception e) {
@@ -64,6 +69,7 @@ public class MainMenuWindow {
         mainTab.add(panel);
     }
 
+    // Getter for this.paidTab
     public PaidTab getPaidTab() {
         return this.paidTab;
     }

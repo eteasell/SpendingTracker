@@ -1,18 +1,16 @@
 package ui;
 
-import model.MonthlyFinances;
 import model.MyPiggyBank;
 import model.Expense;
 import model.ThisMonthsFinances;
 
 import javax.swing.*;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+// Class for the tab to show this month's expenses left to pay
+// Citation: https://www.youtube.com/watch?v=KOI1WbkKUpQ
 public class SeeMonthlyTab {
 
     protected MyPiggyBank myPiggyBank;
@@ -29,8 +27,8 @@ public class SeeMonthlyTab {
     private JSplitPane seeMonthlyTab = new JSplitPane();
     private MyButtonListener myListener = new MyButtonListener(null);
 
-// https://www.youtube.com/watch?v=KOI1WbkKUpQ helpful tutorial and citation for this class
-
+    // MODIFIES: this
+    // EFFECTS: constructs a new SeeMonthlyTab
     public SeeMonthlyTab(MyPiggyBank myPiggyBank, JTabbedPane desktop, MainMenuWindow main) {
         this.myPiggyBank = myPiggyBank;
         this.thisMonthsFinances = myPiggyBank.getThisMonthsFinances();
@@ -39,6 +37,8 @@ public class SeeMonthlyTab {
         this.seeMonthlyTab.setVisible(true);
     }
 
+    // MODIFIES: this
+    // EFFECTS: displays tab of expenses left to be paid this month, and allows expenses to be selected and paid.
     public void designSeeMonthlyTab() {
         list = new JList<>();
         model = new DefaultListModel<>();
@@ -65,27 +65,33 @@ public class SeeMonthlyTab {
 
     }
 
-
+    // Getter for this.seeMonthlyTab
     public JSplitPane getSeeMonthlyTab() {
         return this.seeMonthlyTab;
     }
 
+    // Hidden Button Listener class for PAY button
     public class MyButtonListener implements ActionListener {
 
         private Expense expense;
 
+        // EFFECTS: constructs a button listener custom to the selected expense
         public MyButtonListener(Expense e) {
             this.expense = e;
         }
 
+        // EFFECTS: setter for expense
         public void setExpense(Expense e) {
             this.expense = e;
         }
 
+        // EFFECTS: getter for expense
         public Expense getExpense() {
             return this.expense;
         }
 
+        // MODIFIES: this, Main, MyPiggyBank, PaidTab
+        // EFFECTS: pays the selected expense, and updates myPiggyBank, MainTab, and PaidTab accordingly
         @Override
         public void actionPerformed(ActionEvent e) {
             if (e.getActionCommand().equals("pay")) {

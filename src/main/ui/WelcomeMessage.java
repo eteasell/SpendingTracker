@@ -1,19 +1,16 @@
 package ui;
 
-import model.MonthlyFinances;
 import model.MyPiggyBank;
-import model.MySpending;
 import model.ThisMonthsFinances;
 import persistance.JsonReader;
-import persistance.JsonWriter;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
+// Class representing the pop-up welcome message and new account frame
 public class WelcomeMessage extends JFrame {
 
     private static final int WIDTH = 800;
@@ -34,6 +31,8 @@ public class WelcomeMessage extends JFrame {
     private static final String JSON_STORE = "./data/MyPiggyBankAccount.json"; //*
     private final JsonReader jsonReader = new JsonReader(JSON_STORE);
 
+    // MODIFIES: this
+    // EFFECTS: constructs a new WelcomeMessage
     public WelcomeMessage(JTabbedPane desktop) {
         this.desktop = desktop;
         welcome = new JDialog();
@@ -57,10 +56,13 @@ public class WelcomeMessage extends JFrame {
         welcome.setVisible(true);
     }
 
+    // Getter for this.welcome
     public JDialog getWelcome() {
         return this.welcome;
     }
 
+    // MODIFIES: this, PiggyBankGUI
+    // EFFECTS: constructs a panel which allows user in input name, account balance and monthly income
     public void addNewAccount() {
         newAccountPanel = new JInternalFrame("Please enter your information", true, false,
                 false, false);
@@ -87,11 +89,14 @@ public class WelcomeMessage extends JFrame {
         desktop.add(newAccountPanel);
     }
 
+    // Hidden Button Listener class for LOAD ACCOUNT button
     public class Button1Listener implements ActionListener {
 
         public Button1Listener() {
         }
 
+        // MODIFIES: this, MyPiggyBank, PiggyBankGUI, MainMenuWindow
+        // EFFECTS: responds to user command and loads previously saved account. Brings user to main menu.
         @Override
         public void actionPerformed(ActionEvent e) {
             if (e.getActionCommand().equals("myButton1")) {
@@ -104,11 +109,14 @@ public class WelcomeMessage extends JFrame {
         }
     }
 
+    // Hidden Button Listener class for CREATE NEW ACCOUNT button
     public class Button2Listener implements ActionListener {
 
         public Button2Listener() {
         }
 
+        // MODIFIES: this, PiggyBankGUI
+        // EFFECTS: responds to user input and calls to construct New Account panel
         @Override
         public void actionPerformed(ActionEvent e) {
             if (e.getActionCommand().equals("myButton2")) {
@@ -118,13 +126,15 @@ public class WelcomeMessage extends JFrame {
         }
     }
 
-    // Class which contains the button to initialize a new PiggyBank account from user input
+    // Hidden Button Listener class to initialize a new PiggyBank account from user input
     public class Button3Listener implements ActionListener {
 
         public Button3Listener() {
         }
 
         // MODIFIES: this, MainMenuWindow, PiggyBankGUI
+        // EFFECTS: Responds to user text input by constructing a new MyPiggyBank account with
+        // given name, balance, and income
         @Override
         public void actionPerformed(ActionEvent e) {
             if (e.getActionCommand().equals("myButton3")) {
@@ -149,7 +159,7 @@ public class WelcomeMessage extends JFrame {
         }
     }
 
-    // MODIFIES: this
+    // MODIFIES: MyPiggyBank
     // EFFECTS: loads the saved PiggyBank accounts
     public void loadPiggyBank() { //*
         try {

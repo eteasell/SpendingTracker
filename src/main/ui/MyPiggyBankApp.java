@@ -6,11 +6,10 @@ import persistance.JsonWriter;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
 
-// MyPiggyBank application for text user interaction
+// MyPiggyBank application for text user interaction. Not used in implementation of GUI.
 public class MyPiggyBankApp {
 
     // NOTE: Some code in this class is written using the sample TellerApp project or the JsonSerializationDemo
@@ -212,6 +211,8 @@ public class MyPiggyBankApp {
         System.out.println("Amount added! Your balance is: " + myPiggyBank.getCurrentBalance());
     }
 
+    // MODIFIES: thisMonthsFinances
+    // EFFECTS: allows the user to add overdue expenses from last month
     public void thisMonth() {
         System.out.println("Would you like to add any overdue expenses from last month?");
         System.out.println("Type 'y for yes or 'n' for no...");

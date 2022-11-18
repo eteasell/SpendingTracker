@@ -33,3 +33,15 @@ How much can I be spending on the weekends with my friends? I've asked myself th
 > - As a user, I want to see a visual representation of my spending habits
 > - As a user, I want to apply interest to loans that I have given to my friends
 > - As a user, I want to know when I paid certain expenses
+
+> ## Instructions For Grader:
+> - **You can generate the first required event related to adding X's to Y's by** clicking on the "AddExpense" tab, 
+>   inputting the required information, making sure to check off that the expense is "monthly", and clicking add.
+> - **You can generate the second required event related to adding X's to Y's by** clicking on the "SeeMonthly" tab, and 
+>   you will see this newly added expense. If you click on the expense, you will be able to see the details of the 
+>   expense. While expense is selected, click on the pay button beside the description, and the expense will be paid. 
+>   The balance on the main tab should decrease and the expense should be removed from the list.
+> - You can view previously paid expenses in the "Paid" tab, and clicking on one will show its details.
+> - **You can locate my visual component by** clicking on "Main" tab
+> - **You can save the state of my application by** clicking yes on the pop-up window when you close the application.
+> - **You can reload the state of my application by** clicking "Load" when the application begins.

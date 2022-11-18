@@ -5,7 +5,7 @@
     },
     "thisMonthsExpenses": [],
     "mySpendingMonth": 2,
-    "currentBalance": 26514.49,
+    "currentBalance": 34690.06,
     "name": "Ella",
     "myMonthlyFinancesData": {
         "percentToSave": 0.2,
@@ -14,117 +14,165 @@
     },
     "nonMonthlyPaid": [
         {
-            "expenseAmount": 307,
+            "expenseAmount": 120,
+            "dueMonthly": false,
+            "title": "Nails",
+            "category": "Shopping"
+        },
+        {
+            "expenseAmount": 300,
             "dueMonthly": false,
             "title": "Hair",
             "category": "Shopping"
         },
         {
-            "expenseAmount": 50,
-            "dueMonthly": false,
-            "title": "Shirt",
-            "category": "Shopping"
-        },
-        {
-            "expenseAmount": 100,
-            "dueMonthly": false,
-            "title": "Bar",
-            "category": "Fun"
-        },
-        {
             "expenseAmount": 20,
             "dueMonthly": false,
-            "title": "sushi",
-            "category": "Food"
-        },
-        {
-            "expenseAmount": 5.05,
-            "dueMonthly": false,
-            "title": "coffee",
-            "category": "Needs"
-        },
-        {
-            "expenseAmount": 4.36,
-            "dueMonthly": false,
-            "title": "milk",
-            "category": "Food"
-        },
-        {
-            "expenseAmount": 1000,
-            "dueMonthly": false,
-            "title": "COUCH",
+            "title": "Makeup",
             "category": "Shopping"
+        },
+        {
+            "expenseAmount": 40,
+            "dueMonthly": false,
+            "title": "thing",
+            "category": "Food"
         }
     ],
     "overdueExpenses": [],
     "myMonthlyFinances": [],
     "paidThisMonth": [
         {
-            "expenseAmount": 1000,
+            "expenseAmount": 2000,
             "dueMonthly": true,
             "title": "Rent",
             "category": "Needs"
         },
         {
-            "expenseAmount": 1000,
+            "expenseAmount": 300,
             "dueMonthly": true,
-            "title": "Rent",
+            "title": "Water",
             "category": "Needs"
+        },
+        {
+            "expenseAmount": 300,
+            "dueMonthly": true,
+            "title": "Water",
+            "category": "Needs"
+        },
+        {
+            "expenseAmount": 200,
+            "dueMonthly": true,
+            "title": "hydro",
+            "category": "Needs"
+        },
+        {
+            "expenseAmount": 200,
+            "dueMonthly": true,
+            "title": "hydro",
+            "category": "Needs"
+        },
+        {
+            "expenseAmount": 15,
+            "dueMonthly": true,
+            "title": "U-pass",
+            "category": "Needs"
+        },
+        {
+            "expenseAmount": 15,
+            "dueMonthly": true,
+            "title": "U-pass",
+            "category": "Needs"
+        },
+        {
+            "expenseAmount": 400,
+            "dueMonthly": true,
+            "title": "another thing",
+            "category": "Fun"
+        },
+        {
+            "expenseAmount": 400,
+            "dueMonthly": true,
+            "title": "another thing",
+            "category": "Fun"
         }
     ],
     "mySpending": [
         {
-            "expenseAmount": 1000,
+            "expenseAmount": 2000,
             "dueMonthly": true,
             "title": "Rent",
             "category": "Needs"
         },
         {
-            "expenseAmount": 1000,
+            "expenseAmount": 300,
             "dueMonthly": true,
-            "title": "Rent",
+            "title": "Water",
             "category": "Needs"
         },
         {
-            "expenseAmount": 5.05,
-            "dueMonthly": false,
-            "title": "coffee",
+            "expenseAmount": 300,
+            "dueMonthly": true,
+            "title": "Water",
             "category": "Needs"
         },
         {
-            "expenseAmount": 100,
-            "dueMonthly": false,
-            "title": "Bar",
+            "expenseAmount": 200,
+            "dueMonthly": true,
+            "title": "hydro",
+            "category": "Needs"
+        },
+        {
+            "expenseAmount": 200,
+            "dueMonthly": true,
+            "title": "hydro",
+            "category": "Needs"
+        },
+        {
+            "expenseAmount": 15,
+            "dueMonthly": true,
+            "title": "U-pass",
+            "category": "Needs"
+        },
+        {
+            "expenseAmount": 15,
+            "dueMonthly": true,
+            "title": "U-pass",
+            "category": "Needs"
+        },
+        {
+            "expenseAmount": 400,
+            "dueMonthly": true,
+            "title": "another thing",
             "category": "Fun"
         },
         {
-            "expenseAmount": 20,
+            "expenseAmount": 400,
+            "dueMonthly": true,
+            "title": "another thing",
+            "category": "Fun"
+        },
+        {
+            "expenseAmount": 40,
             "dueMonthly": false,
-            "title": "sushi",
+            "title": "thing",
             "category": "Food"
         },
         {
-            "expenseAmount": 4.36,
+            "expenseAmount": 120,
             "dueMonthly": false,
-            "title": "milk",
-            "category": "Food"
+            "title": "Nails",
+            "category": "Shopping"
         },
         {
-            "expenseAmount": 307,
+            "expenseAmount": 300,
             "dueMonthly": false,
             "title": "Hair",
             "category": "Shopping"
         },
         {
-            "expenseAmount": 50,
+            "expenseAmount": 20,
             "dueMonthly": false,
-            "title": "Shirt",
-            "category": "Shopping"
-        },
-        {
-            "expenseAmount": 1000,
-            "dueMonthly": false,
-            "title": "COUCH",
+            "title": "Makeup",
             "category": "Shopping"
         }
     ]

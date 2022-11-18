@@ -15,8 +15,6 @@ public class ThisMonthsFinances extends MonthlyFinances {
     private double thisMonthsSaving; // amount to be put into savings this month
     private static double thisMonthsSpending; // amount left to spend this month
 
-    // TODO: you don't have a way to pay overdue expenses and get them off the list!
-
     public ThisMonthsFinances() {
         this.thisMonthsExpenses = new ArrayList<>();
         this.overdueExpenses = new ArrayList<>();

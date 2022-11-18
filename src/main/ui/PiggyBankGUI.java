@@ -1,19 +1,12 @@
 package ui;
 
-import model.MonthlyFinances;
 import model.MyPiggyBank;
-import model.MySpending;
-import model.ThisMonthsFinances;
-import persistance.JsonReader;
 import persistance.JsonWriter;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 
 // Main class for running project with GUI
 // Code based off of examples from EdX/StackOverflow, LabelChanger, and AlarmSystem Project
@@ -24,15 +17,12 @@ public class PiggyBankGUI extends JFrame {
     private JFrame frame;
     protected JTabbedPane desktop;
     protected WelcomeMessage welcome;
-    // private MyPiggyBank myPiggyBank;
 
     private static final String JSON_STORE = "./data/MyPiggyBankAccount.json"; //*
     private final JsonWriter jsonWriter = new JsonWriter(JSON_STORE);
 
-    // TODO: fix all suppress checkstyle methods
-    // TODO: add all necessary documentation
-    // TODO: add necessary info to README
-
+    // MODIFIES: this, WelcomeMessage
+    // EFFECTS: constructs the main frame for GUI
     public PiggyBankGUI() { // frame setup from Java Tutorials example
         this.frame = new JFrame();
         this.frame.setTitle("The College Student's Piggy Bank");
@@ -75,10 +65,13 @@ public class PiggyBankGUI extends JFrame {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: prompts user to save application when the close button is clicked, then closes
+    // application after response
     public void customCloser() { // citation: https://docs.oracle.com/javase/tutorial/uiswing/components/dialog.html
         Object[] options = {"Yes", "No"};
         int n = JOptionPane.showOptionDialog(frame, "Would you like to save before you go?", "Wait!",
-                JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
         if (n == JOptionPane.YES_OPTION) {
             MyPiggyBank acc = welcome.sendPiggyBankToGUI();
             savePiggyBank(acc);
@@ -89,6 +82,7 @@ public class PiggyBankGUI extends JFrame {
             System.exit(0);
         }
     }
+
 
     // EFFECTS: runs the program
     public static void main(String[] args) {
