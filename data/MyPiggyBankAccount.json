@@ -5,7 +5,7 @@
     },
     "thisMonthsExpenses": [],
     "mySpendingMonth": 2,
-    "currentBalance": 34690.06,
+    "currentBalance": 37440.9,
     "name": "Ella",
     "myMonthlyFinancesData": {
         "percentToSave": 0.2,
@@ -14,27 +14,33 @@
     },
     "nonMonthlyPaid": [
         {
-            "expenseAmount": 120,
+            "expenseAmount": 100,
             "dueMonthly": false,
-            "title": "Nails",
+            "title": "hair",
             "category": "Shopping"
         },
         {
-            "expenseAmount": 300,
+            "expenseAmount": 50,
             "dueMonthly": false,
-            "title": "Hair",
+            "title": "hair",
             "category": "Shopping"
         },
         {
-            "expenseAmount": 20,
+            "expenseAmount": 5,
             "dueMonthly": false,
-            "title": "Makeup",
-            "category": "Shopping"
+            "title": "apple",
+            "category": "Food"
         },
         {
-            "expenseAmount": 40,
+            "expenseAmount": 3,
             "dueMonthly": false,
-            "title": "thing",
+            "title": "carrot",
+            "category": "Food"
+        },
+        {
+            "expenseAmount": 2,
+            "dueMonthly": false,
+            "title": "onion",
             "category": "Food"
         }
     ],
@@ -42,138 +48,29 @@
     "myMonthlyFinances": [],
     "paidThisMonth": [
         {
-            "expenseAmount": 2000,
+            "expenseAmount": 1000,
             "dueMonthly": true,
-            "title": "Rent",
+            "title": "rent",
             "category": "Needs"
         },
         {
-            "expenseAmount": 300,
+            "expenseAmount": 1000,
             "dueMonthly": true,
-            "title": "Water",
+            "title": "rent",
             "category": "Needs"
         },
         {
-            "expenseAmount": 300,
+            "expenseAmount": 100,
             "dueMonthly": true,
-            "title": "Water",
+            "title": "water bill",
             "category": "Needs"
         },
         {
-            "expenseAmount": 200,
+            "expenseAmount": 100,
             "dueMonthly": true,
-            "title": "hydro",
+            "title": "water bill",
             "category": "Needs"
-        },
-        {
-            "expenseAmount": 200,
-            "dueMonthly": true,
-            "title": "hydro",
-            "category": "Needs"
-        },
-        {
-            "expenseAmount": 15,
-            "dueMonthly": true,
-            "title": "U-pass",
-            "category": "Needs"
-        },
-        {
-            "expenseAmount": 15,
-            "dueMonthly": true,
-            "title": "U-pass",
-            "category": "Needs"
-        },
-        {
-            "expenseAmount": 400,
-            "dueMonthly": true,
-            "title": "another thing",
-            "category": "Fun"
-        },
-        {
-            "expenseAmount": 400,
-            "dueMonthly": true,
-            "title": "another thing",
-            "category": "Fun"
         }
     ],
-    "mySpending": [
-        {
-            "expenseAmount": 2000,
-            "dueMonthly": true,
-            "title": "Rent",
-            "category": "Needs"
-        },
-        {
-            "expenseAmount": 300,
-            "dueMonthly": true,
-            "title": "Water",
-            "category": "Needs"
-        },
-        {
-            "expenseAmount": 300,
-            "dueMonthly": true,
-            "title": "Water",
-            "category": "Needs"
-        },
-        {
-            "expenseAmount": 200,
-            "dueMonthly": true,
-            "title": "hydro",
-            "category": "Needs"
-        },
-        {
-            "expenseAmount": 200,
-            "dueMonthly": true,
-            "title": "hydro",
-            "category": "Needs"
-        },
-        {
-            "expenseAmount": 15,
-            "dueMonthly": true,
-            "title": "U-pass",
-            "category": "Needs"
-        },
-        {
-            "expenseAmount": 15,
-            "dueMonthly": true,
-            "title": "U-pass",
-            "category": "Needs"
-        },
-        {
-            "expenseAmount": 400,
-            "dueMonthly": true,
-            "title": "another thing",
-            "category": "Fun"
-        },
-        {
-            "expenseAmount": 400,
-            "dueMonthly": true,
-            "title": "another thing",
-            "category": "Fun"
-        },
-        {
-            "expenseAmount": 40,
-            "dueMonthly": false,
-            "title": "thing",
-            "category": "Food"
-        },
-        {
-            "expenseAmount": 120,
-            "dueMonthly": false,
-            "title": "Nails",
-            "category": "Shopping"
-        },
-        {
-            "expenseAmount": 300,
-            "dueMonthly": false,
-            "title": "Hair",
-            "category": "Shopping"
-        },
-        {
-            "expenseAmount": 20,
-            "dueMonthly": false,
-            "title": "Makeup",
-            "category": "Shopping"
-        }
-    ]
+    "mySpending": []
 }

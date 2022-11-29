@@ -51,12 +51,14 @@ public class ThisMonthsFinances extends MonthlyFinances {
     public void payMonthly(Expense e) {
         this.thisMonthsExpenses.remove(e);
         this.paidThisMonth.add(e);
+        EventLog.getInstance().logEvent(new Event(""));
     }
 
     // MODIFIES: this
     // EFFECTS: adds not monthly payment to a one time paid list
     public void payNonMonthly(Expense e) {
         this.nonMonthlyPaid.add(e);
+        EventLog.getInstance().logEvent(new Event("Paid new expense titled: " + e.getTitle()));
     }
 
 
@@ -81,6 +83,13 @@ public class ThisMonthsFinances extends MonthlyFinances {
             }
         }
         return null;
+    }
+
+    // MODIFIES: this, MyPiggyBank
+    // EFFECTS: adds expense to thisMonthsExpenses
+    public void addToThisMonthsExpense(Expense e) {
+        thisMonthsExpenses.add(e);
+        EventLog.getInstance().logEvent(new Event("Added new monthly expense titled: " + e.getTitle()));
     }
 
     //EFFECTS: adds an expense to overdue expenses

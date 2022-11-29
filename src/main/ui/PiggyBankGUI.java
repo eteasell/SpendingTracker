@@ -1,12 +1,15 @@
 package ui;
 
+import model.EventLog;
 import model.MyPiggyBank;
+import model.Event;
 import persistance.JsonWriter;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.FileNotFoundException;
+
 
 // Main class for running project with GUI
 // Code based off of examples from EdX/StackOverflow, LabelChanger, and AlarmSystem Project
@@ -21,9 +24,12 @@ public class PiggyBankGUI extends JFrame {
     private static final String JSON_STORE = "./data/MyPiggyBankAccount.json"; //*
     private final JsonWriter jsonWriter = new JsonWriter(JSON_STORE);
 
+    private EventLog eventLog = EventLog.getInstance();
+
     // MODIFIES: this, WelcomeMessage
     // EFFECTS: constructs the main frame for GUI
     public PiggyBankGUI() { // frame setup from Java Tutorials example
+        eventLog.clear();
         this.frame = new JFrame();
         this.frame.setTitle("The College Student's Piggy Bank");
         this.frame.setLayout(new BorderLayout());
@@ -76,11 +82,13 @@ public class PiggyBankGUI extends JFrame {
             MyPiggyBank acc = welcome.sendPiggyBankToGUI();
             savePiggyBank(acc);
             frame.dispose();
-            System.exit(0);
         } else if (n == JOptionPane.NO_OPTION) {
             frame.dispose();
-            System.exit(0);
         }
+        for (Event event : eventLog) {
+            System.out.println(event.toString() + "\n\n");
+        }
+        System.exit(0);
     }
 
 

@@ -1,5 +1,6 @@
 package ui;
 
+import model.Event;
 import model.Expense;
 import model.MyPiggyBank;
 import model.ThisMonthsFinances;
@@ -170,7 +171,7 @@ public class AddExpenseTab {
         public void yesOption() {
             paidMonthly = true;
             Expense expense = new Expense(expTitle, expAmount, true, category);
-            thisMonthsFinances.getThisMonthsExpenses().add(expense);
+            thisMonthsFinances.addToThisMonthsExpense(expense);
             monthly.designSeeMonthlyTab();
             main.getPaidTab().designPaidTab();
         }

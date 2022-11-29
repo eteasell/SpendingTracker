@@ -27,6 +27,7 @@ public class JsonReader {
     public MyPiggyBank read() throws IOException {
         String jsonData = readFile(source);
         JSONObject jsonObject = new JSONObject(jsonData);
+        EventLog.getInstance().logEvent(new Event("Account loaded from: " + this.source));
         return parseMyPiggyBank(jsonObject);
     }
 

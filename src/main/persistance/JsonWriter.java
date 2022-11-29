@@ -1,5 +1,7 @@
 package persistance;
 
+import model.Event;
+import model.EventLog;
 import model.MyPiggyBank;
 import org.json.JSONObject;
 
@@ -33,6 +35,7 @@ public class JsonWriter {
     public void write(MyPiggyBank account) {
         JSONObject json = account.toJson();
         saveToFile(json.toString(TAB));
+        EventLog.getInstance().logEvent(new Event("Account saved to : " + this.destination));
     }
 
     // MODIFIES: this

@@ -30,7 +30,7 @@ public class MyPiggyBank implements Writable {
     // EFFECTS: pays an expense by subtracting its amount from currentBalance and adds expense to MySpending
     public void pay(Expense e) {
         this.currentBalance = this.currentBalance - e.getExpenseAmount();
-        mySpending.addExpenseToMySpending(e);
+        //mySpending.addExpenseToMySpending(e);
         if (e.getStatus()) {
             thisMonthsFinances.payMonthly(e);
         } else {
