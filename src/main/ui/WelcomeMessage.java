@@ -148,7 +148,7 @@ public class WelcomeMessage extends JFrame {
                     double accNum = Double.parseDouble(accountNum);
                     String accountIncome = income.getText();
                     double accIncome = Double.parseDouble(accountIncome);
-                    myPiggyBank = new MyPiggyBank(owner, accNum);
+                    myPiggyBank = MyPiggyBank.makeANewAccount(owner, accNum);
                     thisMonthsFinances = myPiggyBank.getThisMonthsFinances();
                     JOptionPane.showMessageDialog(null, "Created new account for " + owner);
                     desktop.remove(newAccountPanel);

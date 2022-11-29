@@ -51,7 +51,7 @@ public class ThisMonthsFinances extends MonthlyFinances {
     public void payMonthly(Expense e) {
         this.thisMonthsExpenses.remove(e);
         this.paidThisMonth.add(e);
-        EventLog.getInstance().logEvent(new Event(""));
+        EventLog.getInstance().logEvent(new Event("Paid monthly expense titled: " + e.getTitle()));
     }
 
     // MODIFIES: this

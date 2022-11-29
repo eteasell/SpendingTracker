@@ -183,4 +183,9 @@ public class MyPiggyBank implements Writable {
         return json;
     }
 
+    public static MyPiggyBank makeANewAccount(String owner, double num) {
+        EventLog.getInstance().logEvent(new Event("New account created for " + owner));
+        return new MyPiggyBank(owner, num);
+    }
+
 }

@@ -3,74 +3,28 @@
         "saving": 0,
         "spending": 0
     },
-    "thisMonthsExpenses": [],
+    "thisMonthsExpenses": [{
+        "expenseAmount": 2000,
+        "dueMonthly": true,
+        "title": "rent",
+        "category": "Needs"
+    }],
     "mySpendingMonth": 2,
-    "currentBalance": 37440.9,
+    "currentBalance": 299995,
     "name": "Ella",
     "myMonthlyFinancesData": {
         "percentToSave": 0.2,
         "percentToSaveRoughMonth": 0.1,
         "monthlyIncome": 0
     },
-    "nonMonthlyPaid": [
-        {
-            "expenseAmount": 100,
-            "dueMonthly": false,
-            "title": "hair",
-            "category": "Shopping"
-        },
-        {
-            "expenseAmount": 50,
-            "dueMonthly": false,
-            "title": "hair",
-            "category": "Shopping"
-        },
-        {
-            "expenseAmount": 5,
-            "dueMonthly": false,
-            "title": "apple",
-            "category": "Food"
-        },
-        {
-            "expenseAmount": 3,
-            "dueMonthly": false,
-            "title": "carrot",
-            "category": "Food"
-        },
-        {
-            "expenseAmount": 2,
-            "dueMonthly": false,
-            "title": "onion",
-            "category": "Food"
-        }
-    ],
+    "nonMonthlyPaid": [{
+        "expenseAmount": 5,
+        "dueMonthly": false,
+        "title": "apple",
+        "category": "Food"
+    }],
     "overdueExpenses": [],
     "myMonthlyFinances": [],
-    "paidThisMonth": [
-        {
-            "expenseAmount": 1000,
-            "dueMonthly": true,
-            "title": "rent",
-            "category": "Needs"
-        },
-        {
-            "expenseAmount": 1000,
-            "dueMonthly": true,
-            "title": "rent",
-            "category": "Needs"
-        },
-        {
-            "expenseAmount": 100,
-            "dueMonthly": true,
-            "title": "water bill",
-            "category": "Needs"
-        },
-        {
-            "expenseAmount": 100,
-            "dueMonthly": true,
-            "title": "water bill",
-            "category": "Needs"
-        }
-    ],
+    "paidThisMonth": [],
     "mySpending": []
 }

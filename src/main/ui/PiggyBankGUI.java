@@ -86,7 +86,7 @@ public class PiggyBankGUI extends JFrame {
             frame.dispose();
         }
         for (Event event : eventLog) {
-            System.out.println(event.toString() + "\n\n");
+            System.out.println(event.toString() + "\n");
         }
         System.exit(0);
     }
