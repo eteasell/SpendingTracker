@@ -170,7 +170,7 @@ public class AddExpenseTab {
         // and paid tabs.
         public void yesOption() {
             Expense expense = new Expense(expTitle, expAmount, true, category);
-            thisMonthsFinances.addToThisMonthsExpense(expense);
+            thisMonthsFinances.addToThisMonthsExpenses(expense);
             monthly.designSeeMonthlyTab();
             main.getPaidTab().designPaidTab();
         }

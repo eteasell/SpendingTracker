@@ -87,7 +87,7 @@ public class ThisMonthsFinances extends MonthlyFinances {
 
     // MODIFIES: this, MyPiggyBank
     // EFFECTS: adds expense to thisMonthsExpenses
-    public void addToThisMonthsExpense(Expense e) {
+    public void addToThisMonthsExpenses(Expense e) {
         thisMonthsExpenses.add(e);
         EventLog.getInstance().logEvent(new Event("Added new monthly expense titled: " + e.getTitle()));
     }
@@ -155,9 +155,5 @@ public class ThisMonthsFinances extends MonthlyFinances {
         this.dayOfMonth = i;
     }
 
-    //Setter for thisMonthsExpenses for testing purposes
-    public void addToThisMonthsExpenses(Expense e) {
-        thisMonthsExpenses.add(e);
-    }
 }
 

@@ -5,6 +5,7 @@ import model.Expense;
 import model.ThisMonthsFinances;
 import model.MySpending;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -25,6 +26,7 @@ public class MyPiggyBankTest {
         testExpenseHair = new Expense("Hair", 20, false, "Shopping");
         testSpending = new MySpending();
         testFinances = new ThisMonthsFinances();
+        EventLog.getInstance().clear();
     }
 
     @Test
@@ -50,6 +52,19 @@ public class MyPiggyBankTest {
         testAccount.addAmountToPiggyBank(5);
         testAccount.addAmountToPiggyBank(100);
         assertEquals(155, testAccount.getCurrentBalance());
+    }
+
+    @Test
+    public void testCreateAccountLogEvent() {
+        testAccount = testAccount.makeANewAccount("test", 0);
+        assertEquals("test", testAccount.getOwner());
+        assertEquals(0, testAccount.getCurrentBalance());
+        Iterator<Event> list = EventLog.getInstance().iterator();
+        Event e1 = list.next();
+        list.remove();
+        Event e2 = list.next();
+        assertEquals("Event log cleared.", e1.getDescription());
+        assertEquals("New account created for test", e2.getDescription());
     }
 
 }

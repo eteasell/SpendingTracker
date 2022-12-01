@@ -5,6 +5,9 @@ import model.MonthlyFinances;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.Iterator;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ThisMonthsFinancesTest {
@@ -24,6 +27,7 @@ public class ThisMonthsFinancesTest {
         this.testFinances = new ThisMonthsFinances();
         monthlyFinances.setMonthlyIncome(100);
         MonthlyFinances.addExpense(testExpenseRent);
+        EventLog.getInstance().clear();
         testFinances.addToThisMonthsExpenses(testExpenseCar);
     }
 
@@ -122,5 +126,16 @@ public class ThisMonthsFinancesTest {
         assertEquals(2, testFinances.getOverdueExpenses().size());
         assertTrue(testFinances.getOverdueExpenses().contains(testExpenseCar));
         assertTrue(testFinances.getOverdueExpenses().contains(testExpenseRent));
+    }
+
+    @Test
+    public void testAddToThisMonthsExpensesLog() {
+        assertTrue(testFinances.getThisMonthsExpenses().contains(testExpenseCar));
+        Iterator<Event> list = EventLog.getInstance().iterator();
+        Event e1 = list.next();
+        list.remove();
+        Event e2 = list.next();
+        assertEquals("Event log cleared.", e1.getDescription());
+        assertEquals("Added new monthly expense titled: Car", e2.getDescription());
     }
 }
