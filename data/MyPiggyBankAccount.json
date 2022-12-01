@@ -4,13 +4,13 @@
         "spending": 0
     },
     "thisMonthsExpenses": [{
-        "expenseAmount": 200,
+        "expenseAmount": 456.89,
         "dueMonthly": true,
-        "title": "water",
+        "title": "Hydro Bill",
         "category": "Needs"
     }],
     "mySpendingMonth": 2,
-    "currentBalance": 297951,
+    "currentBalance": 37782.29,
     "name": "Ella",
     "myMonthlyFinancesData": {
         "percentToSave": 0.2,
@@ -19,25 +19,118 @@
     },
     "nonMonthlyPaid": [
         {
-            "expenseAmount": 5,
+            "expenseAmount": 87.56,
             "dueMonthly": false,
-            "title": "apple",
+            "title": "Groceries",
             "category": "Food"
         },
         {
-            "expenseAmount": 44,
+            "expenseAmount": 6.79,
             "dueMonthly": false,
-            "title": "space heater",
-            "category": "Needs"
+            "title": "Apples",
+            "category": "Food"
+        },
+        {
+            "expenseAmount": 4.5,
+            "dueMonthly": false,
+            "title": "Oranges",
+            "category": "Food"
         }
     ],
     "overdueExpenses": [],
     "myMonthlyFinances": [],
-    "paidThisMonth": [{
-        "expenseAmount": 2000,
-        "dueMonthly": true,
-        "title": "rent",
-        "category": "Needs"
-    }],
-    "mySpending": []
+    "paidThisMonth": [
+        {
+            "expenseAmount": 200,
+            "dueMonthly": true,
+            "title": "Yoga Membership",
+            "category": "Fun"
+        },
+        {
+            "expenseAmount": 200,
+            "dueMonthly": true,
+            "title": "Yoga Membership",
+            "category": "Fun"
+        },
+        {
+            "expenseAmount": 200,
+            "dueMonthly": true,
+            "title": "Yoga Membership",
+            "category": "Fun"
+        },
+        {
+            "expenseAmount": 1300,
+            "dueMonthly": true,
+            "title": "Rent",
+            "category": "Needs"
+        },
+        {
+            "expenseAmount": 109.43,
+            "dueMonthly": true,
+            "title": "Water Bill",
+            "category": "Needs"
+        },
+        {
+            "expenseAmount": 109.43,
+            "dueMonthly": true,
+            "title": "Water Bill",
+            "category": "Needs"
+        }
+    ],
+    "mySpending": [
+        {
+            "expenseAmount": 1300,
+            "dueMonthly": true,
+            "title": "Rent",
+            "category": "Needs"
+        },
+        {
+            "expenseAmount": 109.43,
+            "dueMonthly": true,
+            "title": "Water Bill",
+            "category": "Needs"
+        },
+        {
+            "expenseAmount": 109.43,
+            "dueMonthly": true,
+            "title": "Water Bill",
+            "category": "Needs"
+        },
+        {
+            "expenseAmount": 200,
+            "dueMonthly": true,
+            "title": "Yoga Membership",
+            "category": "Fun"
+        },
+        {
+            "expenseAmount": 200,
+            "dueMonthly": true,
+            "title": "Yoga Membership",
+            "category": "Fun"
+        },
+        {
+            "expenseAmount": 200,
+            "dueMonthly": true,
+            "title": "Yoga Membership",
+            "category": "Fun"
+        },
+        {
+            "expenseAmount": 87.56,
+            "dueMonthly": false,
+            "title": "Groceries",
+            "category": "Food"
+        },
+        {
+            "expenseAmount": 6.79,
+            "dueMonthly": false,
+            "title": "Apples",
+            "category": "Food"
+        },
+        {
+            "expenseAmount": 4.5,
+            "dueMonthly": false,
+            "title": "Oranges",
+            "category": "Food"
+        }
+    ]
 }

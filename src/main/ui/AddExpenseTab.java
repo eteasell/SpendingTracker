@@ -121,7 +121,6 @@ public class AddExpenseTab {
         private String expTitle;
         private String expAmnt;
         private double expAmount;
-        private boolean paidMonthly = false;
         private String category = null;
 
         // Hidden class constructor
@@ -150,7 +149,8 @@ public class AddExpenseTab {
                 }
                 if (yes.isSelected()) {
                     yesOption();
-                } else if (no.isSelected()) {
+                }
+                if (no.isSelected()) {
                     noOption();
                 }
             }
@@ -169,7 +169,6 @@ public class AddExpenseTab {
         // EFFECTS: constructs appropriate monthly expense, sends to thisMonthsExpenses, and updates seeMonthly
         // and paid tabs.
         public void yesOption() {
-            paidMonthly = true;
             Expense expense = new Expense(expTitle, expAmount, true, category);
             thisMonthsFinances.addToThisMonthsExpense(expense);
             monthly.designSeeMonthlyTab();

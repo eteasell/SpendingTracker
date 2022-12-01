@@ -30,7 +30,7 @@ public class MyPiggyBank implements Writable {
     // EFFECTS: pays an expense by subtracting its amount from currentBalance and adds expense to MySpending
     public void pay(Expense e) {
         this.currentBalance = this.currentBalance - e.getExpenseAmount();
-        //mySpending.addExpenseToMySpending(e);
+        mySpending.addExpenseToMySpending(e);
         if (e.getStatus()) {
             thisMonthsFinances.payMonthly(e);
         } else {
@@ -183,9 +183,11 @@ public class MyPiggyBank implements Writable {
         return json;
     }
 
+    // EFFECTS: creates a new piggy bank account (different from loading one)
     public static MyPiggyBank makeANewAccount(String owner, double num) {
         EventLog.getInstance().logEvent(new Event("New account created for " + owner));
         return new MyPiggyBank(owner, num);
     }
+
 
 }

@@ -45,3 +45,22 @@ How much can I be spending on the weekends with my friends? I've asked myself th
 > - **You can locate my visual component by** clicking on "Main" tab
 > - **You can save the state of my application by** clicking yes on the pop-up window when you close the application.
 > - **You can reload the state of my application by** clicking "Load" when the application begins.
+
+> ## Phase 4 Task 2:
+> Thu Dec 01 13:23:50 PST 2022
+> Event log cleared.
+>
+> Thu Dec 01 13:23:52 PST 2022
+> Account loaded from: ./data/MyPiggyBankAccount.json
+>
+> Thu Dec 01 13:24:07 PST 2022
+> Paid new expense titled: Oranges
+>
+> Thu Dec 01 13:24:24 PST 2022
+> Added new monthly expense titled: Hydro Bill
+>
+> Thu Dec 01 13:24:30 PST 2022
+> Paid monthly expense titled: Water Bill
+>
+> Thu Dec 01 13:24:35 PST 2022
+> Account saved to : ./data/MyPiggyBankAccount.json

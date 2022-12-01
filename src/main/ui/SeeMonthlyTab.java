@@ -101,7 +101,7 @@ public class SeeMonthlyTab {
                     model.removeElement(expense);
                     main.getPaidTab().designPaidTab();
                 } catch (Exception ex) {
-                    System.out.println("list changed");
+                    System.out.println("");
                 }
             }
         }
