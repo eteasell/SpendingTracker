@@ -34,13 +34,7 @@ public class PaidTab {
 
     // MODIFIES: this
     // EFFECTS: constructs a JList of all previously paid expenses, and allows user to inspect each one
-    @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
     public void designPaidTab() {
-        /*try {
-            paidTab.remove(paidTab.getLeftComponent());
-        } catch (Exception e) {
-            System.out.println("ok don't do that");
-        }*/
         list.setModel(model);
         paidTab.setLeftComponent(scroller);
         panel.add(label);

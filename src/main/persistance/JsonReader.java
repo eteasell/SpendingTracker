@@ -109,11 +109,11 @@ public class JsonReader {
         }
         for (Object json : nonMonthly) {
             JSONObject nextExpense = (JSONObject) json;
-            thisMonthsFinances.payNonMonthly(getExpenseFromJson(nextExpense));
+            thisMonthsFinances.addToNonMonthlyPaid(getExpenseFromJson(nextExpense));
         }
         for (Object json : monthly) {
             JSONObject nextExpense = (JSONObject) json;
-            thisMonthsFinances.payMonthly(getExpenseFromJson(nextExpense));
+            thisMonthsFinances.addToPaidThisMonth(getExpenseFromJson(nextExpense));
         }
     }
 }

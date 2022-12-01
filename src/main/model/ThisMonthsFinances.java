@@ -97,10 +97,23 @@ public class ThisMonthsFinances extends MonthlyFinances {
         overdueExpenses.add(e);
     }
 
+    // MODIFIES: this
+    // EFFECTS: adds expense to paidThisMonth. Only to be used in JSONReader!!!
+    public void addToPaidThisMonth(Expense e) {
+        this.paidThisMonth.add(e);
+    }
+
+    // MODIFIES: this
+    // EFFECTS: adds expense to nonMonthlyPaid. Only to be used in JSONReader!!!
+    public void addToNonMonthlyPaid(Expense e) {
+        this.nonMonthlyPaid.add(e);
+    }
+
     //Getter for paidThisMonth
     public ArrayList<Expense> getPaidThisMonth() {
         return paidThisMonth;
     }
+
 
     //Getter for nonMonthlyPaid
     public ArrayList<Expense> getNonMonthlyPaid() {

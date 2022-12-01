@@ -4,27 +4,40 @@
         "spending": 0
     },
     "thisMonthsExpenses": [{
-        "expenseAmount": 2000,
+        "expenseAmount": 200,
         "dueMonthly": true,
-        "title": "rent",
+        "title": "water",
         "category": "Needs"
     }],
     "mySpendingMonth": 2,
-    "currentBalance": 299995,
+    "currentBalance": 297951,
     "name": "Ella",
     "myMonthlyFinancesData": {
         "percentToSave": 0.2,
         "percentToSaveRoughMonth": 0.1,
         "monthlyIncome": 0
     },
-    "nonMonthlyPaid": [{
-        "expenseAmount": 5,
-        "dueMonthly": false,
-        "title": "apple",
-        "category": "Food"
-    }],
+    "nonMonthlyPaid": [
+        {
+            "expenseAmount": 5,
+            "dueMonthly": false,
+            "title": "apple",
+            "category": "Food"
+        },
+        {
+            "expenseAmount": 44,
+            "dueMonthly": false,
+            "title": "space heater",
+            "category": "Needs"
+        }
+    ],
     "overdueExpenses": [],
     "myMonthlyFinances": [],
-    "paidThisMonth": [],
+    "paidThisMonth": [{
+        "expenseAmount": 2000,
+        "dueMonthly": true,
+        "title": "rent",
+        "category": "Needs"
+    }],
     "mySpending": []
 }
