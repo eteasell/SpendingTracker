@@ -8,12 +8,13 @@ import java.awt.*;
 // Class representing the main window on desktop
 public class MainMenuWindow {
 
-    private final JTabbedPane desktop;
-    private JPanel mainTab;
     private AddExpenseTab addExpenseTab;
     private MyPiggyBank myPiggyBank;
     private SeeMonthlyTab seeMonthlyTab;
     private PaidTab paidTab;
+
+    private final JTabbedPane desktop;
+    private JPanel mainTab;
     private ImageIcon image;
 
     // MODIFIES: this

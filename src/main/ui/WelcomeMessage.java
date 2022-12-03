@@ -17,19 +17,17 @@ public class WelcomeMessage extends JFrame {
     private static final int HEIGHT = 600;
 
     private MyPiggyBank myPiggyBank;
-    private ThisMonthsFinances thisMonthsFinances;
+    private MainMenuWindow mainMenu;
+    private final JsonReader jsonReader = new JsonReader(JSON_STORE);
+
     private JTextField name;
     private JTextField amount;
     private JTextField income;
-
     private JTabbedPane desktop;
     private JDialog welcome;
     private JPanel panel;
     private JInternalFrame newAccountPanel;
-    private MainMenuWindow mainMenu;
-
     private static final String JSON_STORE = "./data/MyPiggyBankAccount.json"; //*
-    private final JsonReader jsonReader = new JsonReader(JSON_STORE);
 
     // MODIFIES: this
     // EFFECTS: constructs a new WelcomeMessage
@@ -149,7 +147,6 @@ public class WelcomeMessage extends JFrame {
                     String accountIncome = income.getText();
                     double accIncome = Double.parseDouble(accountIncome);
                     myPiggyBank = MyPiggyBank.makeANewAccount(owner, accNum);
-                    thisMonthsFinances = myPiggyBank.getThisMonthsFinances();
                     JOptionPane.showMessageDialog(null, "Created new account for " + owner);
                     desktop.remove(newAccountPanel);
                     MainMenuWindow mainMenu = new MainMenuWindow(myPiggyBank, desktop);

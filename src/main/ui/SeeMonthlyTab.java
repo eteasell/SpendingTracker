@@ -14,11 +14,11 @@ import java.util.ArrayList;
 public class SeeMonthlyTab {
 
     protected MyPiggyBank myPiggyBank;
-    protected JTabbedPane desktop;
     protected MainMenuWindow main;
-
     private ThisMonthsFinances thisMonthsFinances;
     private JList<Expense> list;
+
+    protected JTabbedPane desktop;
     private DefaultListModel model;
     private JButton button = new JButton("Pay selected expense");
 

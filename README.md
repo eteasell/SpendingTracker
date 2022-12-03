@@ -64,3 +64,20 @@ How much can I be spending on the weekends with my friends? I've asked myself th
 >
 > Thu Dec 01 13:24:35 PST 2022
 > Account saved to : ./data/MyPiggyBankAccount.json
+
+> ## Phase 4 Task 3:
+> Reflecting upon my UML Design Diagram, I would do some major refactoring if I had more time. The messiness of the diagram
+> shows high levels of cohesion between classes, which is undesirable. Below is a list of changes I would make:
+> - Remove the extends relationship between MonthlyFinances and ThisMonthsFinances. ThisMonthsFinances is a subclass of 
+>   MonthlyFinances, which implies that it accesses dependencies from its superclass, and it's superclass can be 
+>   accessed by other classes via the subclass. However, functionally, I ended up creating very similar dependencies
+>   between these classes and others, and barely used the hierarchy. It would make much more sense to separate the two
+>   and pass any needed data (which is not much) to the subclass via constructor.
+> - Create a "Tab" abstract class, which would contain the necessary implementation that is duplicated between the four
+>   main tabs (MainMenuWindow, AddExpenseTab, PaidTab, and SeeMonthlyTab). These classes share a lot of behaviour and
+>   are extremely tightly linked, and I think separating some shared information into a superclass would clean it up.
+> - I would use the Singleton Pattern for the MyPiggyBank class. The application is built to only accommodate one account,
+>   so there is no need for more instances of MyPiggyBank. By implementing this, I would be able to make the singular 
+>   MyPiggyBank globally accessible and would not have it passed into so many constructors.
+> - Remove the dependencies from SeeMonthlyTab and PaidTab to Expense, and access the information through ThisMonthsFinances
+>   instead.

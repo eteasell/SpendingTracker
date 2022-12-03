@@ -18,11 +18,10 @@ public class AddExpenseTab {
     private JSeparator sep = new JSeparator();
 
     protected MyPiggyBank myPiggyBank;
-    protected ThisMonthsFinances thisMonthsFinances;
-    private JTabbedPane desktop;
     private MainMenuWindow main;
     private SeeMonthlyTab monthly;
 
+    private JTabbedPane desktop;
     private JPanel addExpenseTab;
     private JPanel panel = new JPanel();
     private static JTextField title;
@@ -39,7 +38,6 @@ public class AddExpenseTab {
     // EFFECTS: constructs a new AddExpenseTab
     public AddExpenseTab(MyPiggyBank myPiggyBank, JTabbedPane desktop, MainMenuWindow main, SeeMonthlyTab monthly) {
         this.myPiggyBank = myPiggyBank;
-        this.thisMonthsFinances = myPiggyBank.getThisMonthsFinances();
         this.desktop = desktop;
         this.main = main;
         this.monthly = monthly;
@@ -170,7 +168,7 @@ public class AddExpenseTab {
         // and paid tabs.
         public void yesOption() {
             Expense expense = new Expense(expTitle, expAmount, true, category);
-            thisMonthsFinances.addToThisMonthsExpenses(expense);
+            myPiggyBank.getThisMonthsFinances().addToThisMonthsExpenses(expense);
             monthly.designSeeMonthlyTab();
             main.getPaidTab().designPaidTab();
         }

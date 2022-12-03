@@ -11,11 +11,11 @@ import java.util.ArrayList;
 public class PaidTab {
 
     protected MyPiggyBank myPiggyBank;
-    protected JTabbedPane desktop;
     protected MainMenuWindow main;
-
     private ThisMonthsFinances thisMonthsFinances;
     private JList<Expense> list = new JList<>();
+
+    protected JTabbedPane desktop;
     private DefaultListModel model = new DefaultListModel();
     private JLabel label = new JLabel();
     private JPanel panel = new JPanel();

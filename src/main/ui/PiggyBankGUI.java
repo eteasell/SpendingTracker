@@ -17,19 +17,19 @@ public class PiggyBankGUI extends JFrame {
 
     private static final int WIDTH = 800;
     private static final int HEIGHT = 600;
-    private JFrame frame;
-    protected JTabbedPane desktop;
+
+    private final JsonWriter jsonWriter = new JsonWriter(JSON_STORE);
     protected WelcomeMessage welcome;
 
-    private static final String JSON_STORE = "./data/MyPiggyBankAccount.json"; //*
-    private final JsonWriter jsonWriter = new JsonWriter(JSON_STORE);
+    private JFrame frame;
+    protected JTabbedPane desktop;
 
-    private EventLog eventLog = EventLog.getInstance();
+    private static final String JSON_STORE = "./data/MyPiggyBankAccount.json"; //*
 
     // MODIFIES: this, WelcomeMessage
     // EFFECTS: constructs the main frame for GUI
     public PiggyBankGUI() { // frame setup from Java Tutorials example
-        eventLog.clear();
+        EventLog.getInstance().clear();
         this.frame = new JFrame();
         this.frame.setTitle("The College Student's Piggy Bank");
         this.frame.setLayout(new BorderLayout());
@@ -85,7 +85,7 @@ public class PiggyBankGUI extends JFrame {
         } else if (n == JOptionPane.NO_OPTION) {
             frame.dispose();
         }
-        for (Event event : eventLog) {
+        for (Event event : EventLog.getInstance()) {
             System.out.println(event.toString() + "\n");
         }
         System.exit(0);
