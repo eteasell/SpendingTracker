@@ -9,10 +9,10 @@ import java.io.IOException;
 import java.util.Objects;
 import java.util.Scanner;
 
-// MyPiggyBank application for text user interaction. Not used in implementation of GUI.
+// MyPiggyBank application for console based user interaction. Not used in implementation of GUI.
 public class MyPiggyBankApp {
 
-    // NOTE: Some code in this class is written using the sample TellerApp project or the JsonSerializationDemo
+    // NOTE: Some code in this class is written using the course work examples, not myself
     // I acknowledge these sources, and I will note '//*' when I use its code.
 
     private static final String JSON_STORE = "./data/MyPiggyBankAccount.json"; //*

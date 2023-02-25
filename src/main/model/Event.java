@@ -3,6 +3,8 @@ package model;
 import java.util.Calendar;
 import java.util.Date;
 
+// Code in this class is provided from UBC course work; not written by me
+
 /**
  * Represents an piggy bank event.
  */

@@ -3,6 +3,8 @@ package model;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+// This class was used in a console based UI, but unused (so far) in the GUI
+
 //Represents the monthly expenses for the current month that are yet to be paid
 public class ThisMonthsFinances extends MonthlyFinances {
 

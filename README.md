@@ -34,7 +34,7 @@ How much can I be spending on the weekends with my friends? I've asked myself th
 > - As a user, I want to apply interest to loans that I have given to my friends
 > - As a user, I want to know when I paid certain expenses
 
-> ## Instructions For Grader:
+> ## Instructions For Use:
 > - **You can generate the first required event related to adding X's to Y's by** clicking on the "AddExpense" tab, 
 >   inputting the required information, making sure to check off that the expense is "monthly", and clicking add.
 > - **You can generate the second required event related to adding X's to Y's by** clicking on the "SeeMonthly" tab, and 
@@ -46,7 +46,7 @@ How much can I be spending on the weekends with my friends? I've asked myself th
 > - **You can save the state of my application by** clicking yes on the pop-up window when you close the application.
 > - **You can reload the state of my application by** clicking "Load" when the application begins.
 
-> ## Phase 4 Task 2:
+> ## Event Logging Example:
 > Thu Dec 01 13:23:50 PST 2022
 > Event log cleared.
 >
@@ -65,7 +65,7 @@ How much can I be spending on the weekends with my friends? I've asked myself th
 > Thu Dec 01 13:24:35 PST 2022
 > Account saved to : ./data/MyPiggyBankAccount.json
 
-> ## Phase 4 Task 3:
+> ## Reflecting on the Project:
 > Reflecting upon my UML Design Diagram, I would do some major refactoring if I had more time. The messiness of the diagram
 > shows high levels of cohesion between classes, which is undesirable. Below is a list of changes I would make:
 > - Remove the extends relationship between MonthlyFinances and ThisMonthsFinances. ThisMonthsFinances is a subclass of 

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
+// Code in this class is provided from UBC course work; not written by me
+
 /**
  * Represents a log of piggy bank events.
  * We use the Singleton Design Pattern to ensure that there is only
